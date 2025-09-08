@@ -1,0 +1,273 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    
+    /* Animasi untuk chat messages */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+    
+    /* Animasi untuk popup */
+    @keyframes popupEnter {
+        from { opacity: 0; transform: translateY(20px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .chat-popup-enter {
+        animation: popupEnter 0.3s ease-out forwards;
+    }
+    
+    /* Animasi typing indicator */
+    @keyframes typing {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+    }
+    .typing-indicator div {
+        animation: typing 1s infinite ease-in-out;
+    }
+    .typing-indicator div:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    .typing-indicator div:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+    
+    /* Scrollbar styling */
+    .chat-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    .chat-scrollbar::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    .chat-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+    }
+    .dark .chat-scrollbar::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    .dark .chat-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+<!-- Theme Toggle Button -->
+<button id="theme-toggle" class="fixed bottom-6 right-24 z-50 w-12 h-12 flex items-center justify-center 
+      bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-lg border border-white/30 dark:border-gray-600/30 
+      text-yellow-500 dark:text-yellow-400 transition-all duration-300 hover:scale-110 hover:shadow-xl">
+    <span id="theme-toggle-light" class="absolute opacity-100 dark:opacity-0 transition-opacity duration-300">🌞</span>
+    <span id="theme-toggle-dark" class="absolute opacity-0 dark:opacity-100 transition-opacity duration-300">🌙</span>
+</button>
+
+<!-- Chatbot Toggle Button -->
+<button id="chatbot-toggle" class="fixed bottom-6 right-6 z-50 w-12 h-12 flex items-center justify-center 
+      bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl shadow-lg border border-blue-400/30 
+      transition-all duration-300 hover:scale-110 hover:shadow-xl">
+    💬
+</button>
+
+<!-- Chatbot Popup -->
+<div id="chatbot-popup" class="hidden fixed bottom-20 right-6 z-40 w-[calc(100%-3rem)] max-w-md h-96 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30 dark:border-gray-700/30 overflow-hidden transform opacity-0 scale-95 transition-all duration-300 pointer-events-none flex flex-col">
+    <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                <span class="text-white">💬</span>
+            </div>
+            <div class="text-white font-semibold">Genion Assistant</div>
+        </div>
+        <button id="chatbot-close" class="text-white/80 hover:text-white transition-colors">✖</button>
+    </div>
+    
+    <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto chat-scrollbar space-y-4">
+        <div class="animate-fadeIn">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm max-w-[85%]">
+                <p class="text-gray-700 dark:text-gray-200">Hai! Saya adalah Genion Assistant, siap membantu Anda dalam pertanyaan <b>apapun</b> seputar Genion!</p>
+            </div>
+            <div class="text-xs text-gray-500 mt-1 ml-2">10:30</div>
+        </div>
+    </div>
+    
+    <div class="p-4 bg-white/70 dark:bg-gray-800/70 border-t border-white/30 dark:border-gray-700/30">
+        <div class="flex gap-2">
+            <input id="chatbot-input" type="text" placeholder="Tulis pesan..." class="flex-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+            <button id="chatbot-send" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-5 rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script lang="ts">
+document.addEventListener("DOMContentLoaded", () => {
+    // Element references
+    const chatbotPopup = document.getElementById("chatbot-popup");
+    const chatbotInput = document.getElementById("chatbot-input");
+    const chatbotMessages = document.getElementById("chatbot-messages");
+    const chatbotToggle = document.getElementById("chatbot-toggle");
+    const chatbotClose = document.getElementById("chatbot-close");
+    const chatbotSend = document.getElementById("chatbot-send");
+    const themeToggle = document.getElementById("theme-toggle");
+
+
+    // Toggle chatbot popup
+    if (chatbotToggle && chatbotPopup) {
+        chatbotToggle.addEventListener("click", () => {
+            if (chatbotPopup.classList.contains("hidden")) {
+                // Show popup
+                chatbotPopup.classList.remove("hidden");
+                setTimeout(() => {
+                    chatbotPopup.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+                    chatbotPopup.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+                }, 10);
+            } else {
+                // Hide popup
+                chatbotPopup.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+                chatbotPopup.classList.add("opacity-0", "scale-95", "pointer-events-none");
+                setTimeout(() => {
+                    chatbotPopup.classList.add("hidden");
+                }, 300);
+            }
+        });
+    }
+
+    // Close chatbot popup
+    if (chatbotClose && chatbotPopup) {
+        chatbotClose.addEventListener("click", () => {
+            chatbotPopup.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+            chatbotPopup.classList.add("opacity-0", "scale-95", "pointer-events-none");
+            setTimeout(() => {
+                chatbotPopup.classList.add("hidden");
+            }, 300);
+        });
+    }
+
+    // Fungsi kirim pesan
+    function sendMessage() {
+        if (!chatbotInput || !chatbotMessages) return;
+
+        const msg = chatbotInput.value.trim();
+        if (msg) {
+            // Tambahkan pesan user
+            const userMessageDiv = document.createElement("div");
+            userMessageDiv.className = "flex justify-end items-start space-x-2 mt-4";
+            userMessageDiv.innerHTML = `
+                <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl rounded-tr-sm px-3 py-2 max-w-xs shadow-sm">
+                    <p>${msg}</p>
+                </div>
+                <div class="w-8 h-8 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-gray-600 dark:text-gray-400 text-xs">👤</span>
+                </div>
+            `;
+            chatbotMessages.appendChild(userMessageDiv);
+            chatbotInput.value = "";
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+            // Tambahkan typing indicator
+            const typingDiv = document.createElement("div");
+            typingDiv.className = "flex items-start space-x-2 mt-4 typing-message";
+            typingDiv.innerHTML = `
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-white text-xs">🤖</span>
+                </div>
+                <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-tl-sm px-3 py-2 shadow-sm">
+                    <div class="flex space-x-1 typing-indicator">
+                        <div class="w-2 h-2 bg-gray-500 rounded-full"></div>
+                        <div class="w-2 h-2 bg-gray-500 rounded-full"></div>
+                        <div class="w-2 h-2 bg-gray-500 rounded-full"></div>
+                    </div>
+                </div>
+            `;
+            chatbotMessages.appendChild(typingDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+            // Panggil backend Flask
+            fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: msg })
+            })
+            .then(res => res.json())
+            .then(data => {
+                // Hapus typing indicator
+                const typingMessage = chatbotMessages.querySelector(".typing-message");
+                if (typingMessage) typingMessage.remove();
+
+                let reply = data.reply.trim();
+                let formattedReply = "";
+
+                // Jika ada bullet point, format sebagai list
+                if (/^[-*•]/m.test(reply)) {
+                    const lines = reply.split(/\n+/).map(line => line.trim());
+                    formattedReply = "<ul class='list-disc pl-5 space-y-1'>";
+                    for (const line of lines) {
+                        if (/^[-*•]/.test(line)) {
+                            formattedReply += `<li>${line.replace(/^[-*•]\s*/, "")}</li>`;
+                        } else if (line.length > 0) {
+                            formattedReply += `<li>${line}</li>`;
+                        }
+                    }
+                    formattedReply += "</ul>";
+                } else {
+                    // Kalau bukan list, jadikan paragraf
+                    const paragraphs = reply
+                        .split(/\n+/)
+                        .map(p => `<p class="mb-2">${p}</p>`)
+                        .join("");
+                    formattedReply = paragraphs;
+                }
+
+                // Tambahkan balasan chatbot
+                const botMessageDiv = document.createElement("div");
+                botMessageDiv.className = "flex items-start space-x-2 mt-4";
+                botMessageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-xs">🤖</span>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-tl-sm px-3 py-2 max-w-xs shadow-sm">
+                        ${formattedReply}
+                    </div>
+                `;
+                chatbotMessages.appendChild(botMessageDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            })
+            .catch(err => {
+                console.error(err);
+                const typingMessage = chatbotMessages.querySelector(".typing-message");
+                if (typingMessage) typingMessage.remove();
+                
+                const errorDiv = document.createElement("div");
+                errorDiv.className = "flex items-start space-x-2 mt-4";
+                errorDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-xs">!</span>
+                    </div>
+                    <div class="bg-red-100 dark:bg-red-800 rounded-2xl px-3 py-2 max-w-xs shadow-sm">
+                        <p class="text-red-800 dark:text-red-200">⚠️ Gagal terhubung ke server chatbot</p>
+                    </div>
+                `;
+                chatbotMessages.appendChild(errorDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            });
+        }
+    }
+
+    // Event listeners untuk mengirim pesan
+    if (chatbotSend) {
+        chatbotSend.addEventListener("click", sendMessage);
+    }
+
+    if (chatbotInput) {
+        chatbotInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        });
+    }
+});
+</script>
