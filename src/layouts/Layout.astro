@@ -143,6 +143,95 @@ const { title = "Genion Team Professional", description = "Website resmi tim pro
       .mobile-menu.open {
         max-height: 300px;
       }
+
+      /* Chatbot Styles */
+      #chatbot-window {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+      
+      #chat-messages::-webkit-scrollbar {
+        width: 4px;
+      }
+      
+      #chat-messages::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      
+      #chat-messages::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 2px;
+      }
+      
+      #chat-messages::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      
+      @keyframes messageSlide {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .message-animation {
+        animation: messageSlide 0.3s ease-out;
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .chat-pulse {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      /* Loading dots animation */
+      @keyframes dotBounce {
+        0%, 80%, 100% {
+          transform: scale(0);
+        }
+        40% {
+          transform: scale(1);
+        }
+      }
+
+      .loading-dots {
+        display: inline-block;
+      }
+
+      .loading-dots span {
+        width: 6px;
+        height: 6px;
+        background-color: #6b7280;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 2px;
+        animation: dotBounce 1.4s infinite ease-in-out both;
+      }
+
+      .loading-dots span:nth-child(1) {
+        animation-delay: -0.32s;
+      }
+
+      .loading-dots span:nth-child(2) {
+        animation-delay: -0.16s;
+      }
+      
+      @media (max-width: 640px) {
+        #chatbot-window {
+          width: calc(100vw - 3rem);
+          right: 1.5rem;
+        }
+      }
     </style>
   </head>
   
@@ -211,6 +300,117 @@ const { title = "Genion Team Professional", description = "Website resmi tim pro
       <slot />
     </main>
 
+    <!-- Chatbot Component - Enhanced with Gemini AI -->
+    <div id="chatbot-container" class="fixed bottom-6 right-6 z-50">
+      <!-- Chatbot Toggle Button -->
+      <button 
+        id="chatbot-toggle" 
+        class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center group chat-pulse"
+        aria-label="Toggle Chatbot"
+      >
+        <svg id="chat-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+        <svg id="close-icon" class="w-6 h-6 hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Chatbot Window -->
+      <div 
+        id="chatbot-window" 
+        class="absolute bottom-16 right-0 w-80 h-96 bg-white rounded-2xl shadow-2xl transform scale-0 origin-bottom-right transition-transform duration-300 overflow-hidden border border-gray-200"
+      >
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4 text-white">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-sm">Genion AI Assistant</h3>
+              <p class="text-xs text-white/80">Powered by Gemini AI</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto h-64 bg-gray-50">
+          <!-- Welcome Message -->
+          <div class="flex items-start space-x-3 mb-4">
+            <div class="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs font-semibold">
+              GA
+            </div>
+            <div class="bg-white p-3 rounded-lg shadow-sm max-w-64 border">
+              <p class="text-sm text-gray-800">
+                Halo! 👋 Saya Genion AI Assistant yang didukung oleh Gemini. Bagaimana saya bisa membantu Anda hari ini?
+              </p>
+              <span class="text-xs text-gray-500 mt-1 block">Baru saja</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="p-4 border-t bg-white">
+          <div class="flex items-center space-x-2">
+            <input 
+              type="text" 
+              id="chat-input" 
+              placeholder="Ketik pesan Anda..."
+              class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              disabled
+            />
+            <button 
+              id="send-message" 
+              class="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center hover:bg-indigo-600 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Send Message"
+              disabled
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+              </svg>
+            </button>
+          </div>
+          <p class="text-xs text-gray-500 mt-2 text-center">
+            Powered by Gemini AI - Masukkan API Key untuk mengaktifkan
+          </p>
+        </div>
+      </div>
+
+      <!-- API Key Setup Modal -->
+      <div id="api-key-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-60 hidden">
+        <div class="bg-white rounded-2xl p-6 max-w-md mx-4 shadow-2xl">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Setup Gemini AI</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            Masukkan API Key Gemini untuk mengaktifkan chatbot AI. Anda bisa mendapatkan API Key di 
+            <a href="https://makersuite.google.com/app/apikey" target="_blank" class="text-indigo-600 hover:underline">Google AI Studio</a>.
+          </p>
+          <input 
+            type="password" 
+            id="api-key-input" 
+            placeholder="Masukkan Gemini API Key..."
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent mb-4"
+          />
+          <div class="flex space-x-3">
+            <button 
+              id="save-api-key" 
+              class="flex-1 bg-indigo-500 text-white py-2.5 px-4 rounded-lg font-medium hover:bg-indigo-600 transition-colors"
+            >
+              Simpan & Aktifkan
+            </button>
+            <button 
+              id="cancel-api-key" 
+              class="px-4 py-2.5 text-gray-600 hover:text-gray-800 transition-colors"
+            >
+              Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-300 relative overflow-hidden">
       <!-- Background Pattern -->
@@ -238,14 +438,25 @@ const { title = "Genion Team Professional", description = "Website resmi tim pro
                 untuk membangun masa depan yang lebih baik dengan solusi digital terdepan.
               </p>
               <div class="flex space-x-4">
-                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                <!-- WhatsApp -->
+                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
+                    </svg>
                 </a>
-                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                
+                <!-- GitHub -->
+                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                    </svg>
                 </a>
+                
+                <!-- Email -->
                 <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.1.12.112.225.085.347l-.33 1.365c-.053.225-.172.271-.402.162-1.499-.698-2.436-2.888-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.357-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 23.994 12.017 24c6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001.017.001z.017.001z"/></svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/>
+                    </svg>
                 </a>
               </div>
             </div>
@@ -281,7 +492,7 @@ const { title = "Genion Team Professional", description = "Website resmi tim pro
                   <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                   </svg>
-                  +62 812-3456-7890
+                  +62 881-0205-36245
                 </li>
               </ul>
             </div>
@@ -296,7 +507,7 @@ const { title = "Genion Team Professional", description = "Website resmi tim pro
                 &copy; {new Date().getFullYear()} Genion Team. All rights reserved.
               </p>
               <p class="text-gray-500 text-sm mt-2 md:mt-0">
-                Designed by Nafil Habibi
+                Designed by Team Genion
               </p>
             </div>
           </div>
@@ -306,49 +517,323 @@ const { title = "Genion Team Professional", description = "Website resmi tim pro
 
     <!-- Scripts -->
     <script>
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open');
-      });
-    }
-
-    // Scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const animatedElements = document.querySelectorAll('.animate-on-scroll');
-      animatedElements.forEach(el => observer.observe(el));
-
-      // Navbar background change on scroll
-      const navbar = document.getElementById('navbar');
-      if (navbar) {
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 50) {
-            navbar.classList.add('bg-white/90');
-            navbar.classList.remove('bg-white/80');
-          } else {
-            navbar.classList.add('bg-white/80');
-            navbar.classList.remove('bg-white/90');
-          }
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('open');
         });
       }
-    });
-  </script>
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        animatedElements.forEach(el => observer.observe(el));
+
+        // Navbar background change on scroll
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+          window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+              navbar.classList.add('bg-white/90');
+              navbar.classList.remove('bg-white/80');
+            } else {
+              navbar.classList.add('bg-white/80');
+              navbar.classList.remove('bg-white/90');
+            }
+          });
+        }
+
+        // === GEMINI AI CHATBOT FUNCTIONALITY ===
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatIcon = document.getElementById('chat-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-message');
+        const chatMessages = document.getElementById('chat-messages');
+        const apiKeyModal = document.getElementById('api-key-modal');
+        const apiKeyInput = document.getElementById('api-key-input');
+        const saveApiKeyBtn = document.getElementById('save-api-key');
+        const cancelApiKeyBtn = document.getElementById('cancel-api-key');
+        
+        let isOpen = false;
+        let geminiApiKey = localStorage.getItem('genion_gemini_api_key') || '';
+        
+        // Website context for AI
+        const websiteContext = `
+Kamu adalah chatbot khusus untuk menjawab pertanyaan tentang website berikut:
+
+Nama: Genion Team
+Tim: Nafil, Yusuf, Boy, Chacha
+Deskripsi: Tim profesional kreatif & inovatif dengan solusi teknologi terdepan
+Layanan: 
+- Website Development (Pengembangan website profesional, responsive, dan modern)
+- AI Solutions (Solusi kecerdasan buatan untuk berbagai kebutuhan bisnis)
+- IoT Systems (Sistem Internet of Things untuk otomatisasi dan monitoring)
+- Mobile App Development (Aplikasi mobile untuk Android dan iOS)
+- Digital Solutions (Solusi digital komprehensif untuk transformasi bisnis)
+
+Kontak:
+- Email: info@genionteam.com
+- Phone: +62 881-0205-36245
+- Lokasi: Jakarta, Indonesia
+
+Instruksi:
+- Jawab dengan ramah dan profesional dalam bahasa Indonesia
+- Fokus pada informasi tentang Genion Team dan layanannya
+- Berikan informasi yang akurat sesuai konteks website
+- Jika ditanya tentang hal di luar konteks, arahkan kembali ke layanan Genion Team
+        `;
+        
+        // Check if API key exists on load
+        if (geminiApiKey) {
+          enableChatbot();
+        }
+        
+        // Toggle chatbot window
+        function toggleChatbot() {
+          if (!geminiApiKey) {
+            showApiKeyModal();
+            return;
+          }
+          
+          isOpen = !isOpen;
+          
+          if (isOpen) {
+            chatbotWindow.classList.remove('scale-0');
+            chatbotWindow.classList.add('scale-100');
+            chatIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+            chatbotToggle.classList.remove('chat-pulse');
+            chatInput.focus();
+          } else {
+            chatbotWindow.classList.remove('scale-100');
+            chatbotWindow.classList.add('scale-0');
+            chatIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            chatbotToggle.classList.add('chat-pulse');
+          }
+        }
+        
+        // Show API key modal
+        function showApiKeyModal() {
+          apiKeyModal.classList.remove('hidden');
+          apiKeyInput.focus();
+        }
+        
+        // Hide API key modal
+        function hideApiKeyModal() {
+          apiKeyModal.classList.add('hidden');
+          apiKeyInput.value = '';
+        }
+        
+        // Enable chatbot functionality
+        function enableChatbot() {
+          chatInput.disabled = false;
+          sendButton.disabled = false;
+          document.querySelector('#chatbot-window .text-xs.text-gray-500').textContent = 'Powered by Gemini AI - Siap membantu Anda';
+        }
+        
+        // Add message to chat
+        function addMessage(message, isUser = false, isLoading = false) {
+          const messageDiv = document.createElement('div');
+          messageDiv.className = `flex items-start space-x-3 mb-4 message-animation ${isUser ? 'flex-row-reverse space-x-reverse' : ''}`;
+          
+          const currentTime = new Date().toLocaleTimeString('id-ID', { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+          });
+          
+          let messageContent = message;
+          if (isLoading) {
+            messageContent = '<div class="loading-dots"><span></span><span></span><span></span></div>';
+          }
+          
+          messageDiv.innerHTML = `
+            <div class="w-8 h-8 ${isUser ? 'bg-gray-600' : 'bg-indigo-500'} rounded-full flex items-center justify-center text-white text-xs font-semibold">
+              ${isUser ? 'U' : 'GA'}
+            </div>
+            <div class="${isUser ? 'bg-indigo-500 text-white' : 'bg-white text-gray-800'} p-3 rounded-lg shadow-sm max-w-64 border ${isUser ? 'border-indigo-500' : ''}" ${isLoading ? 'id="loading-message"' : ''}>
+              <p class="text-sm">${messageContent}</p>
+              ${!isLoading ? `<span class="text-xs ${isUser ? 'text-indigo-100' : 'text-gray-500'} mt-1 block">${currentTime}</span>` : ''}
+            </div>
+          `;
+          
+          chatMessages.appendChild(messageDiv);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+          
+          return messageDiv;
+        }
+        
+        // Call Gemini API
+        async function callGeminiAPI(userMessage) {
+          const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`;
+          
+          const requestBody = {
+            contents: [
+              {
+                parts: [
+                  {
+                    text: `${websiteContext}
+
+Pertanyaan pengguna: ${userMessage}
+
+Jawab dengan bahasa Indonesia yang ramah dan profesional:`
+                  }
+                ]
+              }
+            ],
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 1024,
+            }
+          };
+          
+          try {
+            const response = await fetch(API_URL, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(requestBody)
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok && data.candidates && data.candidates[0]) {
+              return data.candidates[0].content.parts[0].text;
+            } else {
+              console.error('Gemini API Error:', data);
+              throw new Error(data.error?.message || 'Unknown API error');
+            }
+          } catch (error) {
+            console.error('Error calling Gemini API:', error);
+            throw error;
+          }
+        }
+        
+        // Send message function
+        async function sendMessage() {
+          const message = chatInput.value.trim();
+          if (!message || !geminiApiKey) return;
+          
+          // Add user message
+          addMessage(message, true);
+          chatInput.value = '';
+          
+          // Add loading message
+          const loadingMsg = addMessage('', false, true);
+          
+          try {
+            // Call Gemini API
+            const response = await callGeminiAPI(message);
+            
+            // Remove loading message
+            loadingMsg.remove();
+            
+            // Add AI response
+            addMessage(response, false);
+            
+          } catch (error) {
+            // Remove loading message
+            loadingMsg.remove();
+            
+            let errorMessage = 'Maaf, terjadi kesalahan. Silakan coba lagi.';
+            
+            if (error.message.includes('API key not valid') || error.message.includes('API_KEY_INVALID')) {
+              errorMessage = 'API Key tidak valid. Silakan periksa kembali API Key Anda.';
+              geminiApiKey = '';
+              localStorage.removeItem('genion_gemini_api_key');
+              chatInput.disabled = true;
+              sendButton.disabled = true;
+            } else if (error.message.includes('quota') || error.message.includes('QUOTA_EXCEEDED')) {
+              errorMessage = 'Kuota API telah habis. Silakan coba lagi nanti atau periksa pengaturan billing Anda.';
+            }
+            
+            addMessage(errorMessage, false);
+          }
+        }
+        
+        // Event Listeners
+        if (chatbotToggle) {
+          chatbotToggle.addEventListener('click', toggleChatbot);
+        }
+        
+        if (sendButton) {
+          sendButton.addEventListener('click', sendMessage);
+        }
+        
+        if (chatInput) {
+          chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              sendMessage();
+            }
+          });
+        }
+        
+        if (saveApiKeyBtn) {
+          saveApiKeyBtn.addEventListener('click', function() {
+            const apiKey = apiKeyInput.value.trim();
+            if (apiKey) {
+              geminiApiKey = apiKey;
+              localStorage.setItem('genion_gemini_api_key', apiKey);
+              enableChatbot();
+              hideApiKeyModal();
+              
+              // Show success message
+              addMessage('Chatbot AI telah berhasil diaktifkan! Sekarang Anda bisa bertanya tentang Genion Team dan layanannya.', false);
+            } else {
+              alert('Silakan masukkan API Key yang valid.');
+            }
+          });
+        }
+        
+        if (cancelApiKeyBtn) {
+          cancelApiKeyBtn.addEventListener('click', hideApiKeyModal);
+        }
+        
+        // Close modal when clicking outside
+        apiKeyModal?.addEventListener('click', function(e) {
+          if (e.target === apiKeyModal) {
+            hideApiKeyModal();
+          }
+        });
+        
+        // Close chatbot when clicking outside
+        document.addEventListener('click', function(e) {
+          if (isOpen && 
+              !chatbotToggle.contains(e.target) && 
+              !chatbotWindow.contains(e.target) &&
+              !apiKeyModal.contains(e.target)) {
+            toggleChatbot();
+          }
+        });
+        
+        // Handle Enter key in API key input
+        apiKeyInput?.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            saveApiKeyBtn.click();
+          }
+        });
+      });
+    </script>
 
   </body>
 </html>
