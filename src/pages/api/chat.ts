@@ -1,7 +1,7 @@
 export const prerender = false; 
 import type { APIRoute } from "astro";
 
-const API_KEY = "AIzaSyAX9MVI1cG4cAz0mxDg6QG9zXGZMwm4ayg"; 
+const API_KEY = "AIzaSyDL22BnbrdD6xxSJZIJ4DjgST79GnwqRXs"; 
 const API_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 

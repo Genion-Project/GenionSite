@@ -65,14 +65,14 @@
 
 <!-- Chatbot Toggle Button -->
 <button id="chatbot-toggle" class="fixed bottom-6 right-6 z-50 w-12 h-12 flex items-center justify-center 
-      bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl shadow-lg border border-blue-400/30 
+      bg-gradient-to-r from-blue-400 to-blue-600 dark:from-green-500 dark:to-green-700 text-white rounded-xl shadow-lg border border-blue-400/30 dark:border-green-500/30 
       transition-all duration-300 hover:scale-110 hover:shadow-xl">
     💬
 </button>
 
 <!-- Chatbot Popup -->
 <div id="chatbot-popup" class="hidden fixed bottom-20 right-6 z-40 w-[calc(100%-3rem)] max-w-md h-96 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30 dark:border-gray-700/30 overflow-hidden transform opacity-0 scale-95 transition-all duration-300 pointer-events-none flex flex-col">
-    <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-4 flex items-center justify-between">
+    <div class="bg-gradient-to-r from-blue-400 to-blue-600 dark:from-green-500 dark:to-green-700 p-4 flex items-center justify-between">
         <div class="flex items-center space-x-3">
             <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
                 <span class="text-white">💬</span>
@@ -93,8 +93,8 @@
     
     <div class="p-4 bg-white/70 dark:bg-gray-800/70 border-t border-white/30 dark:border-gray-700/30">
         <div class="flex gap-2">
-            <input id="chatbot-input" type="text" placeholder="Tulis pesan..." class="flex-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-            <button id="chatbot-send" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-5 rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-md">
+            <input id="chatbot-input" type="text" placeholder="Tulis pesan..." class="flex-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-green-500 focus:border-transparent transition-all" />
+            <button id="chatbot-send" class="bg-gradient-to-r from-blue-400 to-blue-600 dark:from-green-500 dark:to-green-700 text-white px-5 rounded-xl hover:from-blue-500 hover:to-blue-700 dark:hover:from-green-600 dark:hover:to-green-800 transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
                 </svg>
