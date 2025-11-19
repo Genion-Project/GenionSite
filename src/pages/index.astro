@@ -3,17 +3,24 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from 'astro:assets';
 import hero from '../images/genion.png';
 import edufo from '../images/edufo_db.png';
+import bg1 from "../images/gambar1.webp";
+import bg2 from "../images/gamba2.webp";
+import bg3 from "../images/gambar3.webp";
 ---
 
 <Layout title="Beranda | Genion Team" description="Tim profesional yang berfokus pada inovasi, teknologi, dan kreativitas untuk membangun masa depan yang lebih baik">
   <!-- Hero Section -->
+  <link rel="preload" as="image" href={bg1.src} />
+  <link rel="preload" as="image" href={bg2.src} />
+  <link rel="preload" as="image" href={bg3.src} />
+
   <section class="relative bg-gray-900 text-white overflow-hidden">
     <!-- Background Slideshow -->
     <div class="absolute inset-0 overflow-hidden">
       <div class="absolute inset-0">
-        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-90" data-slide="0" style="background-image: url('/gambar1.webp');"></div>
-        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" data-slide="1" style="background-image: url('/gamba2.webp');"></div>
-        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" data-slide="2" style="background-image: url('/gambar3.webp');"></div>
+        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-90" data-slide="0" style={`background-image: url(${bg1.src});`}></div>
+        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" data-slide="1" style={`background-image: url(${bg2.src});`}></div>
+        <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" data-slide="2" style={`background-image: url(${bg3.src});`}></div>
       </div>
       <div class="absolute inset-0 bg-black/60"></div>
       <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-cyan-300/15 rounded-full blur-3xl animate-float"></div>
