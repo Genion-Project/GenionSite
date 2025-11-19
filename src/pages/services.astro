@@ -1,5 +1,4 @@
 ---
-// src/pages/services.astro
 import Layout from "../layouts/Layout.astro";
 
 const services = [
@@ -101,373 +100,218 @@ const values = [
 
 <Layout title="Layanan Kami - Genion Team Professional" description="Temukan layanan teknologi terbaik dari Genion Team untuk transformasi digital bisnis Anda">
   
-  <!-- Tambahkan toggle theme button -->
-  <div class="theme-toggle-container">
-    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-      <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-      </svg>
-      <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-      </svg>
-    </button>
-  </div>
-
   <!-- Hero Section -->
-  <section class="hero-section">
-    <!-- Background Effects -->
-    <div class="hero-effects">
-      <div class="bg-effect bg-effect-1"></div>
-      <div class="bg-effect bg-effect-2"></div>
-      <div class="bg-effect bg-effect-3"></div>
+  <section class="relative bg-gradient-to-br from-gray-50 via-white to-indigo-50 dark:bg-gradient-to-br dark:from-gray-950 dark:via-gray-900 dark:to-slate-900 text-gray-800 dark:text-white overflow-hidden">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200/40 to-indigo-300/30 dark:from-blue-300/15 dark:to-purple-500/15 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-200/40 to-pink-300/30 dark:from-purple-300/15 dark:to-pink-500/15 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-indigo-200/30 to-cyan-300/20 dark:from-indigo-300/8 dark:to-cyan-300/8 rounded-full blur-2xl animate-float" style="animation-delay: 4s;"></div>
     </div>
-
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <div class="status-indicator"></div>
-          <span>Layanan Profesional</span>
+    
+    <!-- Grid Pattern -->
+    <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0); background-size: 50px 50px;"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+      <div class="text-center animate-on-scroll">
+        <div class="inline-flex items-center space-x-2 bg-indigo-100 dark:bg-indigo-500/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-indigo-200 dark:border-indigo-400/30">
+          <div class="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse"></div>
+          <span class="text-sm font-medium text-indigo-700 dark:text-indigo-200">Layanan Profesional</span>
         </div>
-
-        <h1 class="hero-title">
-          Layanan Kami
+        
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900 dark:text-gray-100">
+          Layanan <span class="text-cyan-700 dark:text-green-400">Kami</span>
         </h1>
-
-        <p class="hero-description">
+        
+        <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
           Temukan solusi teknologi terbaik yang dirancang khusus untuk membantu bisnis Anda tumbuh dan bersaing di era digital.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ... (sisa kode HTML sebelumnya tetap sama) -->
+  <!-- Services Section -->
+  <section class="py-20 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-on-scroll">
+        <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Layanan Profesional Kami</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Kami menyediakan berbagai layanan teknologi untuk memenuhi kebutuhan bisnis Anda
+        </p>
+      </div>
 
-</Layout>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service, index) => (
+          <div class="group bg-white dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-purple-500/50 dark:hover:border-purple-400/50 shadow-lg dark:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={service.icon}/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">{service.title}</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">{service.description}</p>
+            
+            <ul class="space-y-2 mb-4">
+              {service.features.map((feature) => (
+                <li class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                  <svg class="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            
+            <div class="text-lg font-bold text-cyan-700 dark:text-green-400 mb-4">{service.price}</div>
+            
+            <a href="/contact" class="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-500 dark:to-purple-500 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+              Konsultasi Gratis
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-<style>
-  :root {
-    /* Core Colors - tetap sama */
-    --color-primary-50: #f0f9ff;
-    --color-primary-100: #e0f2fe;
-    /* ... (variabel warna lainnya tetap sama) */
-  }
-
-  /* Light Theme Variables */
-  [data-theme="light"] {
-    --bg-primary: var(--color-gray-50);
-    --bg-secondary: white;
-    --bg-tertiary: var(--color-gray-100);
-    --bg-quaternary: var(--color-gray-200);
-    --text-primary: var(--color-gray-900);
-    --text-secondary: var(--color-gray-600);
-    --text-tertiary: var(--color-gray-500);
-    --text-accent: var(--color-primary-600);
-    --border-color: var(--color-gray-200);
-    --border-secondary: var(--color-gray-300);
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --shadow-secondary: rgba(0, 0, 0, 0.05);
-    --card-bg: white;
-    --overlay-bg: rgba(255, 255, 255, 0.8);
-    --hero-text-color: white;
-    --hero-text-secondary: rgba(255, 255, 255, 0.8);
-    --gradient-primary: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
-    --gradient-secondary: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500));
+  <!-- Process Section -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-transparent via-indigo-50/30 to-transparent dark:from-transparent dark:via-indigo-950/20 dark:to-transparent"></div>
     
-    /* Hero section background untuk light mode */
-    --hero-bg: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-800) 50%, var(--color-accent-800) 100%);
-    --cta-bg: linear-gradient(135deg, var(--color-primary-600), var(--color-accent-600));
-  }
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-on-scroll">
+        <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Proses Kerja Kami</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Metodologi terstruktur untuk memastikan kesuksesan setiap proyek
+        </p>
+      </div>
 
-  /* Dark Theme Variables */
-  [data-theme="dark"] {
-    --bg-primary: var(--color-gray-900);
-    --bg-secondary: var(--color-gray-800);
-    --bg-tertiary: var(--color-gray-700);
-    --bg-quaternary: var(--color-gray-600);
-    --text-primary: var(--color-gray-50);
-    --text-secondary: var(--color-gray-300);
-    --text-tertiary: var(--color-gray-400);
-    --text-accent: var(--color-primary-400);
-    --border-color: var(--color-gray-700);
-    --border-secondary: var(--color-gray-600);
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    --shadow-secondary: rgba(0, 0, 0, 0.2);
-    --card-bg: var(--color-gray-800);
-    --overlay-bg: rgba(0, 0, 0, 0.5);
-    --hero-text-color: white;
-    --hero-text-secondary: rgba(255, 255, 255, 0.8);
-    --gradient-primary: linear-gradient(90deg, var(--color-primary-400), var(--color-accent-400));
-    --gradient-secondary: linear-gradient(135deg, var(--color-primary-400), var(--color-accent-400));
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {processSteps.map((step, index) => (
+          <div class="text-center animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="relative inline-block mb-6">
+              <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 dark:from-indigo-400 dark:to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
+                <span class="text-3xl font-bold text-white">{step.step}</span>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">{step.title}</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-20 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-on-scroll">
+        <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Nilai-Nilai Kami</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Prinsip yang memandu setiap pekerjaan kami
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {values.map((value, index) => (
+          <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-xl hover:shadow-2xl dark:hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 text-center animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={value.icon}/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">{value.title}</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 dark:from-indigo-700 dark:via-purple-700 dark:to-pink-600">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+    </div>
     
-    /* Hero section background untuk dark mode */
-    --hero-bg: linear-gradient(135deg, #0a0a0a 0%, var(--color-gray-900) 50%, var(--color-gray-800) 100%);
-    --cta-bg: linear-gradient(135deg, var(--color-primary-700), var(--color-accent-700));
-  }
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-white mb-6 animate-on-scroll">Siap Memulai Proyek Anda?</h2>
+      <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-on-scroll" style="animation-delay: 0.1s">
+        Hubungi kami sekarang untuk konsultasi gratis dan wujudkan ide digital Anda
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll" style="animation-delay: 0.2s">
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-white text-indigo-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+          Hubungi Kami
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="/portfolio" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border-2 border-white/30 hover:bg-white/20 transition-all duration-300">
+          Lihat Portfolio
+        </a>
+      </div>
+    </div>
+  </section>
 
-  /* Default theme (mengikuti preferensi sistem) */
-  :root {
-    --bg-primary: var(--color-gray-50);
-    --bg-secondary: white;
-    /* ... (default light theme) */
-    --hero-bg: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-800) 50%, var(--color-accent-800) 100%);
-    --cta-bg: linear-gradient(135deg, var(--color-primary-600), var(--color-accent-600));
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg-primary: var(--color-gray-900);
-      --bg-secondary: var(--color-gray-800);
-      /* ... (default dark theme) */
-      --hero-bg: linear-gradient(135deg, #0a0a0a 0%, var(--color-gray-900) 50%, var(--color-gray-800) 100%);
-      --cta-bg: linear-gradient(135deg, var(--color-primary-700), var(--color-accent-700));
+  <style>
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
-  }
-
-  /* CSS Class-based Theme Support */
-  .dark,
-  [data-theme="dark"] {
-    --bg-primary: var(--color-gray-900);
-    --bg-secondary: var(--color-gray-800);
-    /* ... (dark theme variables) */
-    --hero-bg: linear-gradient(135deg, #0a0a0a 0%, var(--color-gray-900) 50%, var(--color-gray-800) 100%);
-    --cta-bg: linear-gradient(135deg, var(--color-primary-700), var(--color-accent-700));
-  }
-
-  /* Theme Toggle Styles */
-  .theme-toggle-container {
-    position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 1000;
-  }
-
-  .theme-toggle {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-secondary);
-  }
-
-  .theme-toggle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -2px var(--shadow-secondary);
-  }
-
-  .theme-toggle .sun-icon,
-  .theme-toggle .moon-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    position: absolute;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .theme-toggle .sun-icon {
-    color: #f59e0b;
-  }
-
-  .theme-toggle .moon-icon {
-    color: var(--text-primary);
-    opacity: 0;
-    transform: rotate(-90deg);
-  }
-
-  [data-theme="dark"] .theme-toggle .sun-icon {
-    opacity: 0;
-    transform: rotate(90deg);
-  }
-
-  [data-theme="dark"] .theme-toggle .moon-icon {
-    opacity: 1;
-    transform: rotate(0deg);
-  }
-
-  /* Update Hero Section Background */
-  .hero-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    background: var(--hero-bg);
-  }
-
-  /* Update CTA Section Background */
-  .cta-section {
-    padding: 5rem 0;
-    background: var(--cta-bg);
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* ... (sisa kode CSS sebelumnya tetap sama) */
-
-</style>
-
-<script lang="ts">
-  // Intersection Observer for scroll animations
-  document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('.animate-on-scroll, .service-card, .feature-card, .value-card, .process-step');
     
-    if (animatedElements.length > 0) {
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
+    .dark .glass-effect {
+      background: rgba(31, 41, 55, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(75, 85, 99, 0.3);
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
 
+  <script>
+    // Animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
           }
         });
-      }, observerOptions);
-
-      animatedElements.forEach((el, index) => {
-        // Add staggered delay for better visual effect
-        el.style.transitionDelay = `${index * 0.1}s`;
-        observer.observe(el);
-      });
-    }
-
-    // Enhanced loading states for service cards
-    const serviceCtaButtons = document.querySelectorAll('.service-cta');
-    serviceCtaButtons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        if (!button.classList.contains('loading')) {
-          button.classList.add('loading');
-          button.style.opacity = '0.7';
-          const originalText = button.innerHTML;
-          button.innerHTML = 'Memuat...';
-          
-          // Reset after navigation (this won't execute if page changes)
-          setTimeout(() => {
-            button.classList.remove('loading');
-            button.style.opacity = '1';
-            button.innerHTML = originalText;
-          }, 2000);
-        }
-      });
-    });
-
-    // Enhanced keyboard navigation
-    const focusableElements = document.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
-    focusableElements.forEach(element => {
-      element.addEventListener('focus', function() {
-        this.style.outline = '3px solid var(--color-primary-400)';
-        this.style.outlineOffset = '2px';
+      }, {
+        threshold: 0.1
       });
       
-      element.addEventListener('blur', function() {
-        this.style.outline = 'none';
-      });
+      animatedElements.forEach(el => observer.observe(el));
     });
-
-    // Performance optimization for low-end devices
-    const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
-    if (isLowEndDevice) {
-      document.documentElement.style.setProperty('--animation-duration', '0.3s');
-      // Reduce background effects on low-end devices
-      const bgEffects = document.querySelectorAll('.bg-effect, .cta-effect');
-      bgEffects.forEach(effect => {
-        effect.style.display = 'none';
-      });
-    }
-
-    // Theme detection and handling
-    const detectTheme = () => {
-      const isDark = document.documentElement.classList.contains('dark') ||
-                    document.documentElement.getAttribute('data-theme') === 'dark' ||
-                    (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      
-      // Add theme-specific optimizations
-      if (isDark) {
-        document.body.classList.add('dark-theme-optimized');
-      } else {
-        document.body.classList.remove('dark-theme-optimized');
-      }
-    };
-
-    // Watch for theme changes
-    const observer = new MutationObserver(detectTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class', 'data-theme']
-    });
-
-    // Listen for system theme changes
-    if (window.matchMedia) {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectTheme);
-    }
-
-    // Initial theme detection
-    detectTheme();
-
-    // Smooth scrolling for anchor links
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-          const headerOffset = 80; // Adjust based on your header height
-          const elementPosition = targetElement.offsetTop;
-          const offsetPosition = elementPosition - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Enhanced card interactions
-    const cards = document.querySelectorAll('.service-card, .feature-card, .value-card');
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        this.style.zIndex = '10';
-      });
-      
-      card.addEventListener('mouseleave', function() {
-        this.style.zIndex = '1';
-      });
-    });
-  });
-
-  // Error handling for failed resources
-  document.addEventListener('error', function(e) {
-    if (e.target.tagName === 'IMG') {
-      e.target.style.display = 'none';
-      console.warn('Image failed to load:', e.target.src);
-    }
-  }, true);
-
-  // Preload critical resources
-  const preloadResources = () => {
-    const criticalImages = document.querySelectorAll('img[data-preload]');
-    criticalImages.forEach(img => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
-      link.href = img.src;
-      document.head.appendChild(link);
-    });
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', preloadResources);
-  } else {
-    preloadResources();
-  }
-</script>
+  </script>
+</Layout>

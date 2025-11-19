@@ -11,15 +11,6 @@
         animation: fadeIn 0.3s ease-out forwards;
     }
     
-    /* Animasi untuk popup */
-    @keyframes popupEnter {
-        from { opacity: 0; transform: translateY(20px) scale(0.95); }
-        to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .chat-popup-enter {
-        animation: popupEnter 0.3s ease-out forwards;
-    }
-    
     /* Animasi typing indicator */
     @keyframes typing {
         0%, 100% { transform: scale(1); }
@@ -40,63 +31,122 @@
         width: 6px;
     }
     .chat-scrollbar::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.05);
         border-radius: 10px;
     }
     .chat-scrollbar::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(0, 0, 0, 0.2);
         border-radius: 10px;
     }
+    .chat-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.3);
+    }
     .dark .chat-scrollbar::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.05);
     }
     .dark .chat-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    .dark .chat-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Overlay backdrop */
+    .chat-overlay {
+        background: rgba(0, 0, 0, 0);
+        transition: background 0.3s ease;
+    }
+    .chat-overlay.show {
         background: rgba(0, 0, 0, 0.3);
     }
 </style>
 
-<!-- Theme Toggle Button -->
-<button id="theme-toggle" class="fixed bottom-6 right-24 z-50 w-12 h-12 flex items-center justify-center 
-      bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-lg border border-white/30 dark:border-gray-600/30 
-      text-yellow-500 dark:text-yellow-400 transition-all duration-300 hover:scale-110 hover:shadow-xl">
-    <span id="theme-toggle-light" class="absolute opacity-100 dark:opacity-0 transition-opacity duration-300">🌞</span>
-    <span id="theme-toggle-dark" class="absolute opacity-0 dark:opacity-100 transition-opacity duration-300">🌙</span>
-</button>
+<!-- Overlay Backdrop -->
+<div id="chat-overlay" class="chat-overlay hidden fixed inset-0 z-[9998]"></div>
 
-<!-- Chatbot Toggle Button -->
-<button id="chatbot-toggle" class="fixed bottom-6 right-6 z-50 w-12 h-12 flex items-center justify-center 
-      bg-gradient-to-r from-blue-400 to-blue-600 dark:from-green-500 dark:to-green-700 text-white rounded-xl shadow-lg border border-blue-400/30 dark:border-green-500/30 
-      transition-all duration-300 hover:scale-110 hover:shadow-xl">
-    💬
-</button>
+<!-- Chatbot Widget with Maskot -->
+<div class="fixed bottom-6 right-6 z-[9999]">
+    <!-- Speech Bubble with Typing Animation -->
+    <div id="mascot-bubble" class="absolute bottom-full right-16 mb-2 opacity-0 animate-fadeIn pointer-events-none" style="animation-delay: 0.5s; animation-fill-mode: forwards;">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl rounded-br-sm px-4 py-2 shadow-2xl border-2 border-blue-200 dark:border-green-600">
+            <p id="mascot-text" class="text-xs text-gray-700 dark:text-gray-200 font-medium whitespace-nowrap"></p>
+            <!-- Typing Indicator (initially visible) -->
+            <div id="mascot-typing" class="flex space-x-1">
+                <div class="w-1.5 h-1.5 bg-blue-500 dark:bg-green-500 rounded-full animate-bounce" style="animation-delay: 0s;"></div>
+                <div class="w-1.5 h-1.5 bg-blue-500 dark:bg-green-500 rounded-full animate-bounce" style="animation-delay: 0.15s;"></div>
+                <div class="w-1.5 h-1.5 bg-blue-500 dark:bg-green-500 rounded-full animate-bounce" style="animation-delay: 0.3s;"></div>
+            </div>
+        </div>
+        <!-- Arrow pointer pointing to button -->
+        <div class="absolute bottom-1 right-0 w-0 h-0 border-t-6 border-t-transparent border-b-6 border-b-transparent border-l-6 border-l-white dark:border-l-gray-800 transform translate-x-full"></div>
+    </div>
 
-<!-- Chatbot Popup -->
-<div id="chatbot-popup" class="hidden fixed bottom-20 right-6 z-40 w-[calc(100%-3rem)] max-w-md h-96 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30 dark:border-gray-700/30 overflow-hidden transform opacity-0 scale-95 transition-all duration-300 pointer-events-none flex flex-col">
-    <div class="bg-gradient-to-r from-blue-400 to-blue-600 dark:from-green-500 dark:to-green-700 p-4 flex items-center justify-between">
+    <!-- Container for Maskot and Button -->
+    <div class="relative flex items-end gap-1">
+        <!-- Maskot Image positioned next to button -->
+        <div class="relative flex items-end justify-center" style="width: 120px; height: 120px;">
+            <img src="/maskot_genion.png" alt="Genion Maskot" class="w-full h-full object-contain object-bottom drop-shadow-2xl transition-all duration-500 hover:scale-105 animate-bounce cursor-pointer" style="animation-duration: 2s;" id="mascot-img">
+            
+            <!-- Hand pointing gesture animation -->
+            <div class="absolute -right-1 top-1/3 text-xl animate-bounce pointer-events-none" style="animation-duration: 1s;">
+                👉
+            </div>
+        </div>
+        
+        <!-- Chatbot Toggle Button -->
+        <button id="chatbot-toggle" class="w-14 h-14 flex items-center justify-center 
+              bg-gradient-to-r from-blue-400 to-blue-600 dark:from-green-500 dark:to-green-700 text-white rounded-full shadow-2xl border-2 border-white/50 dark:border-gray-700/50 
+              transition-all duration-300 hover:scale-110 hover:shadow-xl hover:rotate-12 relative mb-1
+              animate-pulse" style="animation-duration: 2s;">
+            <span class="text-2xl">💬</span>
+            <!-- Notification Dot -->
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-gray-900 animate-ping"></span>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-gray-900 flex items-center justify-center text-[10px] text-white font-bold">!</span>
+        </button>
+    </div>
+</div>
+
+<!-- Chatbot Popup - Sidebar Style -->
+<div id="chatbot-popup" class="hidden fixed top-0 right-0 z-[9999] w-full sm:w-96 h-full bg-white dark:bg-gray-900 shadow-2xl border-l border-gray-200 dark:border-gray-700 transform translate-x-full transition-transform duration-300 flex flex-col">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-blue-400 to-blue-600 dark:from-green-500 dark:to-green-700 p-5 flex items-center justify-between">
         <div class="flex items-center space-x-3">
-            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                <span class="text-white">💬</span>
+            <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                <span class="text-white text-xl">💬</span>
             </div>
-            <div class="text-white font-semibold">Genion Assistant</div>
+            <div>
+                <div class="text-white font-semibold text-lg">Genion Assistant</div>
+                <div class="flex items-center gap-1 text-white/90 text-xs">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    Online - Siap membantu
+                </div>
+            </div>
         </div>
-        <button id="chatbot-close" class="text-white/80 hover:text-white transition-colors">✖</button>
+        <button id="chatbot-close" class="text-white/80 hover:text-white transition-colors text-2xl w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-lg">✖</button>
     </div>
     
-    <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto chat-scrollbar space-y-4">
+    <!-- Messages Area -->
+    <div id="chatbot-messages" class="flex-1 p-5 overflow-y-auto chat-scrollbar space-y-4 bg-gray-50 dark:bg-gray-900">
         <div class="animate-fadeIn">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm max-w-[85%]">
-                <p class="text-gray-700 dark:text-gray-200">Hai! Saya adalah Genion Assistant, siap membantu Anda dalam pertanyaan <b>apapun</b> seputar Genion!</p>
+            <div class="flex items-start space-x-2">
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-white text-xs">🤖</span>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl rounded-tl-sm p-4 shadow-sm max-w-[85%]">
+                    <p class="text-gray-700 dark:text-gray-200 text-sm">Hai! Saya adalah <b>Genion Assistant</b>, siap membantu Anda dalam pertanyaan <b>apapun</b> seputar Genion! 🚀</p>
+                </div>
             </div>
-            <div class="text-xs text-gray-500 mt-1 ml-2">10:30</div>
+            <div class="text-xs text-gray-400 mt-1 ml-10">Baru saja</div>
         </div>
     </div>
     
-    <div class="p-4 bg-white/70 dark:bg-gray-800/70 border-t border-white/30 dark:border-gray-700/30">
+    <!-- Input Area -->
+    <div class="p-5 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
         <div class="flex gap-2">
-            <input id="chatbot-input" type="text" placeholder="Tulis pesan..." class="flex-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-green-500 focus:border-transparent transition-all" />
+            <input id="chatbot-input" type="text" placeholder="Ketik pesan Anda..." class="flex-1 bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-sm text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-green-500 focus:border-transparent transition-all" />
             <button id="chatbot-send" class="bg-gradient-to-r from-blue-400 to-blue-600 dark:from-green-500 dark:to-green-700 text-white px-5 rounded-xl hover:from-blue-500 hover:to-blue-700 dark:hover:from-green-600 dark:hover:to-green-800 transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
             </button>
         </div>
@@ -112,70 +162,142 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatbotToggle = document.getElementById("chatbot-toggle");
     const chatbotClose = document.getElementById("chatbot-close");
     const chatbotSend = document.getElementById("chatbot-send");
-    const themeToggle = document.getElementById("theme-toggle");
+    const mascotText = document.getElementById("mascot-text");
+    const mascotTyping = document.getElementById("mascot-typing");
+    const mascotImg = document.getElementById("mascot-img");
+    const chatOverlay = document.getElementById("chat-overlay");
 
+    // Typing animation for mascot bubble
+    const messages = [
+        "Halo! Aku Genisten, Genion Asisten! 😊",
+        "Ada yang bisa saya bantu? 💬",
+        "Yuk chat dengan saya! 🚀"
+    ];
+    let currentMessageIndex = 0;
 
-    // Toggle chatbot popup
-    if (chatbotToggle && chatbotPopup) {
-        chatbotToggle.addEventListener("click", () => {
-            if (chatbotPopup.classList.contains("hidden")) {
-                // Show popup
-                chatbotPopup.classList.remove("hidden");
-                setTimeout(() => {
-                    chatbotPopup.classList.remove("opacity-0", "scale-95", "pointer-events-none");
-                    chatbotPopup.classList.add("opacity-100", "scale-100", "pointer-events-auto");
-                }, 10);
-            } else {
-                // Hide popup
-                chatbotPopup.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
-                chatbotPopup.classList.add("opacity-0", "scale-95", "pointer-events-none");
-                setTimeout(() => {
-                    chatbotPopup.classList.add("hidden");
-                }, 300);
-            }
+    function typeMessage(text, callback) {
+        if (!mascotText || !mascotTyping) return;
+        
+        mascotTyping.classList.remove("hidden");
+        mascotText.textContent = "";
+        
+        setTimeout(() => {
+            mascotTyping.classList.add("hidden");
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                if (i < text.length) {
+                    mascotText.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingInterval);
+                    if (callback) callback();
+                }
+            }, 50);
+        }, 1500);
+    }
+
+    function cycleMascotMessages() {
+        typeMessage(messages[currentMessageIndex], () => {
+            setTimeout(() => {
+                currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+                cycleMascotMessages();
+            }, 4000);
         });
+    }
+
+    // Start typing animation after page load
+    setTimeout(() => {
+        cycleMascotMessages();
+    }, 1000);
+
+    // Function to open sidebar
+    function openSidebar() {
+        if (chatbotPopup.classList.contains("hidden")) {
+            chatbotPopup.classList.remove("hidden");
+            chatOverlay.classList.remove("hidden");
+            setTimeout(() => {
+                chatbotPopup.classList.remove("translate-x-full");
+                chatbotPopup.classList.add("translate-x-0");
+                chatOverlay.classList.add("show");
+            }, 10);
+            // Focus input when opened
+            setTimeout(() => chatbotInput.focus(), 350);
+        }
+    }
+
+    // Function to close sidebar
+    function closeSidebar() {
+        chatbotPopup.classList.remove("translate-x-0");
+        chatbotPopup.classList.add("translate-x-full");
+        chatOverlay.classList.remove("show");
+        setTimeout(() => {
+            chatbotPopup.classList.add("hidden");
+            chatOverlay.classList.add("hidden");
+        }, 300);
+    }
+
+    // Toggle chatbot popup - Sidebar style
+    if (chatbotToggle) {
+        chatbotToggle.addEventListener("click", openSidebar);
     }
 
     // Close chatbot popup
-    if (chatbotClose && chatbotPopup) {
-        chatbotClose.addEventListener("click", () => {
-            chatbotPopup.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
-            chatbotPopup.classList.add("opacity-0", "scale-95", "pointer-events-none");
-            setTimeout(() => {
-                chatbotPopup.classList.add("hidden");
-            }, 300);
-        });
+    if (chatbotClose) {
+        chatbotClose.addEventListener("click", closeSidebar);
     }
 
-    // Fungsi kirim pesan
+    // Close on overlay click
+    if (chatOverlay) {
+        chatOverlay.addEventListener("click", closeSidebar);
+    }
+
+    // Add click event to mascot
+    if (mascotImg) {
+        mascotImg.addEventListener("click", openSidebar);
+    }
+
+    // Get current time
+    function getCurrentTime() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        return `${hours}:${minutes}`;
+    }
+
+    // Function to send message
     function sendMessage() {
         if (!chatbotInput || !chatbotMessages) return;
 
         const msg = chatbotInput.value.trim();
         if (msg) {
-            // Tambahkan pesan user
+            const currentTime = getCurrentTime();
+            
+            // Add user message
             const userMessageDiv = document.createElement("div");
-            userMessageDiv.className = "flex justify-end items-start space-x-2 mt-4";
+            userMessageDiv.className = "animate-fadeIn";
             userMessageDiv.innerHTML = `
-                <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl rounded-tr-sm px-3 py-2 max-w-xs shadow-sm">
-                    <p>${msg}</p>
+                <div class="flex justify-end items-start space-x-2">
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl rounded-tr-sm px-4 py-2 max-w-[85%] shadow-sm">
+                        <p class="text-sm">${msg}</p>
+                    </div>
+                    <div class="w-8 h-8 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-gray-600 dark:text-gray-400 text-xs">👤</span>
+                    </div>
                 </div>
-                <div class="w-8 h-8 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span class="text-gray-600 dark:text-gray-400 text-xs">👤</span>
-                </div>
+                <div class="text-xs text-gray-400 mt-1 mr-10 text-right">${currentTime}</div>
             `;
             chatbotMessages.appendChild(userMessageDiv);
             chatbotInput.value = "";
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
-            // Tambahkan typing indicator
+            // Add typing indicator
             const typingDiv = document.createElement("div");
-            typingDiv.className = "flex items-start space-x-2 mt-4 typing-message";
+            typingDiv.className = "flex items-start space-x-2 typing-message animate-fadeIn";
             typingDiv.innerHTML = `
                 <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
                     <span class="text-white text-xs">🤖</span>
                 </div>
-                <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-tl-sm px-3 py-2 shadow-sm">
+                <div class="bg-gray-200 dark:bg-gray-800 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm">
                     <div class="flex space-x-1 typing-indicator">
                         <div class="w-2 h-2 bg-gray-500 rounded-full"></div>
                         <div class="w-2 h-2 bg-gray-500 rounded-full"></div>
@@ -186,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
             chatbotMessages.appendChild(typingDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
-            // Panggil backend Flask
+            // Call Flask backend
             fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -194,17 +316,17 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(res => res.json())
             .then(data => {
-                // Hapus typing indicator
+                // Remove typing indicator
                 const typingMessage = chatbotMessages.querySelector(".typing-message");
                 if (typingMessage) typingMessage.remove();
 
                 let reply = data.reply.trim();
                 let formattedReply = "";
 
-                // Jika ada bullet point, format sebagai list
+                // Format bullet points as list
                 if (/^[-*•]/m.test(reply)) {
                     const lines = reply.split(/\n+/).map(line => line.trim());
-                    formattedReply = "<ul class='list-disc pl-5 space-y-1'>";
+                    formattedReply = "<ul class='list-disc pl-5 space-y-1 text-sm'>";
                     for (const line of lines) {
                         if (/^[-*•]/.test(line)) {
                             formattedReply += `<li>${line.replace(/^[-*•]\s*/, "")}</li>`;
@@ -214,24 +336,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     formattedReply += "</ul>";
                 } else {
-                    // Kalau bukan list, jadikan paragraf
+                    // Convert to paragraphs
                     const paragraphs = reply
                         .split(/\n+/)
-                        .map(p => `<p class="mb-2">${p}</p>`)
+                        .map(p => `<p class="text-sm mb-2">${p}</p>`)
                         .join("");
                     formattedReply = paragraphs;
                 }
 
-                // Tambahkan balasan chatbot
+                // Add bot message
                 const botMessageDiv = document.createElement("div");
-                botMessageDiv.className = "flex items-start space-x-2 mt-4";
+                botMessageDiv.className = "animate-fadeIn";
                 botMessageDiv.innerHTML = `
-                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span class="text-white text-xs">🤖</span>
+                    <div class="flex items-start space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-xs">🤖</span>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl rounded-tl-sm px-4 py-2 max-w-[85%] shadow-sm">
+                            ${formattedReply}
+                        </div>
                     </div>
-                    <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-tl-sm px-3 py-2 max-w-xs shadow-sm">
-                        ${formattedReply}
-                    </div>
+                    <div class="text-xs text-gray-400 mt-1 ml-10">${currentTime}</div>
                 `;
                 chatbotMessages.appendChild(botMessageDiv);
                 chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
@@ -242,14 +367,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (typingMessage) typingMessage.remove();
                 
                 const errorDiv = document.createElement("div");
-                errorDiv.className = "flex items-start space-x-2 mt-4";
+                errorDiv.className = "animate-fadeIn";
                 errorDiv.innerHTML = `
-                    <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span class="text-white text-xs">!</span>
+                    <div class="flex items-start space-x-2">
+                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-xs">⚠️</span>
+                        </div>
+                        <div class="bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-2xl px-4 py-2 max-w-[85%] shadow-sm">
+                            <p class="text-red-800 dark:text-red-200 text-sm">Gagal terhubung ke server. Silakan coba lagi.</p>
+                        </div>
                     </div>
-                    <div class="bg-red-100 dark:bg-red-800 rounded-2xl px-3 py-2 max-w-xs shadow-sm">
-                        <p class="text-red-800 dark:text-red-200">⚠️ Gagal terhubung ke server chatbot</p>
-                    </div>
+                    <div class="text-xs text-gray-400 mt-1 ml-10">${currentTime}</div>
                 `;
                 chatbotMessages.appendChild(errorDiv);
                 chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
@@ -257,7 +385,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Event listeners untuk mengirim pesan
+    // Event listeners for sending message
     if (chatbotSend) {
         chatbotSend.addEventListener("click", sendMessage);
     }
@@ -269,5 +397,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    // Close sidebar with Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !chatbotPopup.classList.contains("hidden")) {
+            closeSidebar();
+        }
+    });
 });
 </script>
