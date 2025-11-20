@@ -13,7 +13,7 @@
     "@astrojs/vercel": "^8.2.10",
     "@iconify/react": "^6.0.2",
     "@tailwindcss/vite": "^4.1.13",
-    "astro": "^5.14.7",
+    "astro": "^5.15.9",
     "astro-icon": "^1.1.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
