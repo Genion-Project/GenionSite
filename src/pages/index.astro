@@ -1,440 +1,511 @@
 ---
-  import Layout from "../layouts/Layout.astro";
-  import { Image } from 'astro:assets';
-  import hero from '../images/genion.png';
-  import edufo from '../images/edufo_db.png';
-  const bg1 = "https://images2.imgbox.com/ca/0e/FiEK7nad_o.jpg";
-  const bg2 = "https://images2.imgbox.com/a4/8d/HeRpmRof_o.jpg";
-  const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
+import Layout from "../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import hero from '../images/genion.png';
+import edufo from '../images/edufo_db.png';
+const bg1 = "https://images2.imgbox.com/ca/0e/FiEK7nad_o.jpg";
+const bg2 = "https://images2.imgbox.com/a4/8d/HeRpmRof_o.jpg";
+const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
 ---
 
-  <Layout title="Beranda | Genion Team" description="Tim profesional yang berfokus pada inovasi, teknologi, dan kreativitas untuk membangun masa depan yang lebih baik">
-    <!-- Hero Section -->
-    <link rel="preload" as="image" href={bg1} />
-    <link rel="preload" as="image" href={bg2} />
-    <link rel="preload" as="image" href={bg3} />
+<Layout title="Beranda | Genion Team" description="Tim profesional yang berfokus pada inovasi, teknologi, dan kreativitas untuk membangun masa depan yang lebih baik">
+  <!-- Hero Section -->
+  <link rel="preload" as="image" href={bg1} />
+  <link rel="preload" as="image" href={bg2} />
+  <link rel="preload" as="image" href={bg3} />
 
+  <section class="relative bg-gray-900 text-white overflow-hidden">
+    <!-- Background Karosel -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0">
+        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" data-slide="0" style={`background-image: url(${bg1});`}></div>
+        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" data-slide="1" style={`background-image: url(${bg2});`}></div>
+        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" data-slide="2" style={`background-image: url(${bg3});`}></div>
+      </div>
+      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-cyan-300/15 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/20 to-purple-500/15 rounded-full blur-3xl animate-float-delay"></div>
+      
+      <!-- Karosel Controls -->
+      <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-colors duration-300" data-slide="0"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-colors duration-300" data-slide="1"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-colors duration-300" data-slide="2"></button>
+      </div>
+      
+      <!-- Navigation Arrows -->
+      <button class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      <button class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
     
-
-    <section class="relative bg-gray-900 text-white overflow-hidden">
-      <!-- Background Slideshow -->
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute inset-0">
-          <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-90" data-slide="0" style={`background-image: url(${bg1});`}></div>
-          <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" data-slide="1" style={`background-image: url(${bg2});`}></div>
-          <div class="slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" data-slide="2" style={`background-image: url(${bg3});`}></div>
-        </div>
-        <div class="absolute inset-0 bg-black/60"></div>
-        <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-cyan-300/15 rounded-full blur-3xl animate-float"></div>
-        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/20 to-purple-500/15 rounded-full blur-3xl animate-float-delay"></div>
-      </div>
-      
-      <!-- Grid Pattern -->
-      <div class="absolute inset-0 opacity-[0.03] grid-pattern"></div>
-      
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
-          <!-- Left Content -->
-          <div class="animate-on-scroll order-2 lg:order-1">
-            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 mb-6 sm:mb-8 border border-white/20">
-              <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span class="text-xs sm:text-sm font-medium text-white">Available for New Projects</span>
-            </div>
-            
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold font-poppins leading-tight mb-4 sm:mb-6 text-white">
-              <span class="block">Inovasi</span>
-              <span class="block text-cyan-300">Digital</span>
-              <span class="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-blue-200">untuk Masa Depan</span>
-            </h1>
-            
-            <p class="text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8 leading-relaxed">
-              Kami adalah tim profesional yang menghadirkan solusi teknologi terdepan, 
-              kreativitas tanpa batas, dan inovasi berkelanjutan untuk transformasi digital Anda.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">
-              <a href="/about" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group">
-                <span class="text-sm sm:text-base">Pelajari Lebih Lanjut</span>
-                <svg class="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-              </a>
-              <a href="/contact" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/30 shadow-sm hover:shadow-md transition-all duration-300 text-sm sm:text-base backdrop-blur-sm">
-                Hubungi Kami
-              </a>
-            </div>
-            
-            <!-- Partner Logos -->
-            <div class="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-              <div class="flex flex-col items-center group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm p-2 sm:p-3 shadow-md transition duration-500 group-hover:scale-110 group-hover:shadow-lg border border-white/20">
-                  <img src="/logo_nuris.png" alt="SMK Nurul Islam Jakarta" loading="lazy" width="80" height="80" class="object-contain max-h-full max-w-full" />
-                </div>
-                <p class="mt-2 sm:mt-3 text-xs sm:text-sm text-blue-200 group-hover:text-cyan-300 transition text-center leading-tight">
-                  SMK Nurul Islam Jakarta
-                </p>
-              </div>
-
-              <div class="flex flex-col items-center group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm p-2 sm:p-3 shadow-md transition duration-500 group-hover:scale-110 group-hover:shadow-lg border border-white/20">
-                  <img src="/logobkk.jpg" alt="Bursa Kerja Khusus" loading="lazy" width="80" height="80" class="object-contain max-h-full max-w-full" />
-                </div>
-                <p class="mt-2 sm:mt-3 text-xs sm:text-sm text-blue-200 group-hover:text-cyan-300 transition text-center leading-tight">
-                  Bursa Kerja Khusus
-                </p>
-              </div>
-
-              <div class="flex flex-col items-center group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm p-2 sm:p-3 shadow-md transition duration-500 group-hover:scale-110 group-hover:shadow-lg border border-white/20">
-                  <img src="/logo_murata.avif" alt="PT. Multi Raksa Tribrata" loading="lazy" width="80" height="80" class="object-contain max-h-full max-w-full rounded" />
-                </div>
-                <p class="mt-2 sm:mt-3 text-xs sm:text-sm text-blue-200 group-hover:text-cyan-300 transition text-center leading-tight">
-                  PT. Multi Raksa Tribrata
-                </p>
-              </div>
-            </div>
+    <!-- Grid Pattern -->
+    <div class="absolute inset-0 opacity-[0.03] grid-pattern"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
+        <!-- Left Content -->
+        <div class="animate-on-scroll order-2 lg:order-1">
+          <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 mb-6 sm:mb-8 border border-white/20">
+            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span class="text-xs sm:text-sm font-medium text-white">Available for New Projects</span>
           </div>
-
-          <!-- Right Content - Interactive Element -->
-          <div class="relative animate-on-scroll order-1 lg:order-2" style="animation-delay: 0.2s;">
-            <div class="relative group max-w-lg mx-auto lg:max-w-none">
-              <div class="glass-effect rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl overflow-hidden transform transition duration-500 group-hover:shadow-3xl animate-float">
-                <img 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-                  alt="Performance Dashboard"
-                  loading="lazy"
-                  width="800"
-                  height="450"
-                  class="w-full h-auto object-cover rounded-xl sm:rounded-2xl transition duration-700 group-hover:scale-105"
-                />
-                <div class="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/10 rounded-xl sm:rounded-2xl pointer-events-none"></div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold font-poppins leading-tight mb-4 sm:mb-6 text-white">
+            <span class="block">Inovasi</span>
+            <span class="block text-cyan-300">Digital</span>
+            <span class="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-blue-200">untuk Masa Depan</span>
+          </h1>
+          
+          <p class="text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8 leading-relaxed">
+            Kami adalah tim profesional yang menghadirkan solusi teknologi terdepan, 
+            kreativitas tanpa batas, dan inovasi berkelanjutan untuk transformasi digital Anda.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">
+            <a href="/about" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <span class="text-sm sm:text-base">Pelajari Lebih Lanjut</span>
+              <svg class="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+            <a href="/contact" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/30 shadow-sm hover:shadow-md transition-all duration-300 text-sm sm:text-base backdrop-blur-sm">
+              Hubungi Kami
+            </a>
+          </div>
+          
+          <!-- Partner Logos -->
+          <div class="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            <div class="flex flex-col items-center group">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm p-2 sm:p-3 shadow-md transition duration-500 group-hover:scale-110 group-hover:shadow-lg border border-white/20">
+                <img src="/logo_nuris.png" alt="SMK Nurul Islam Jakarta" loading="lazy" width="80" height="80" class="object-contain max-h-full max-w-full" />
               </div>
-              <div class="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-400/30 to-cyan-300/30 rounded-lg sm:rounded-xl blur-xl animate-pulse"></div>
-              <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-tr from-purple-400/30 to-pink-400/30 rounded-lg sm:rounded-xl blur-xl animate-pulse-delay"></div>
+              <p class="mt-2 sm:mt-3 text-xs sm:text-sm text-blue-200 group-hover:text-cyan-300 transition text-center leading-tight">
+                SMK Nurul Islam Jakarta
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center group">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm p-2 sm:p-3 shadow-md transition duration-500 group-hover:scale-110 group-hover:shadow-lg border border-white/20">
+                <img src="/logobkk.jpg" alt="Bursa Kerja Khusus" loading="lazy" width="80" height="80" class="object-contain max-h-full max-w-full" />
+              </div>
+              <p class="mt-2 sm:mt-3 text-xs sm:text-sm text-blue-200 group-hover:text-cyan-300 transition text-center leading-tight">
+                Bursa Kerja Khusus
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center group">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm p-2 sm:p-3 shadow-md transition duration-500 group-hover:scale-110 group-hover:shadow-lg border border-white/20">
+                <img src="/logo_murata.avif" alt="PT. Multi Raksa Tribrata" loading="lazy" width="80" height="80" class="object-contain max-h-full max-w-full rounded" />
+              </div>
+              <p class="mt-2 sm:mt-3 text-xs sm:text-sm text-blue-200 group-hover:text-cyan-300 transition text-center leading-tight">
+                PT. Multi Raksa Tribrata
+              </p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Services Section -->
-    <section class="py-20 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Layanan Kami</h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Kami menyediakan solusi digital lengkap untuk membantu bisnis Anda tumbuh dan berkembang di era digital</p>
+        <!-- Right Content - Interactive Element -->
+        <div class="relative animate-on-scroll order-1 lg:order-2" style="animation-delay: 0.2s;">
+          <div class="relative group max-w-lg mx-auto lg:max-w-none">
+            <div class="glass-effect rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl overflow-hidden transform transition duration-500 group-hover:shadow-3xl animate-float">
+              <img 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                alt="Performance Dashboard"
+                loading="lazy"
+                width="800"
+                height="450"
+                class="w-full h-auto object-cover rounded-xl sm:rounded-2xl transition duration-700 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/10 rounded-xl sm:rounded-2xl pointer-events-none"></div>
+            </div>
+            <div class="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-400/30 to-cyan-300/30 rounded-lg sm:rounded-xl blur-xl animate-pulse"></div>
+            <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-tr from-purple-400/30 to-pink-400/30 rounded-lg sm:rounded-xl blur-xl animate-pulse-delay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Layanan Kami</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Kami menyediakan solusi digital lengkap untuk membantu bisnis Anda tumbuh dan berkembang di era digital</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service 1 -->
+        <div class="group bg-white dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-purple-500/50 dark:hover:border-purple-400/50 shadow-lg dark:shadow-xl transition-all duration-300 hover:-translate-y-2">
+          <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Pengembangan Web</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Website responsif dan aplikasi web yang dirancang khusus untuk kebutuhan bisnis Anda</p>
+          <a href="#" class="inline-flex items-center text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors duration-300 font-medium">
+            Selengkapnya
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Service 1 -->
-          <div class="group bg-white dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-purple-500/50 dark:hover:border-purple-400/50 shadow-lg dark:shadow-xl transition-all duration-300 hover:-translate-y-2">
-            <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Pengembangan Web</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">Website responsif dan aplikasi web yang dirancang khusus untuk kebutuhan bisnis Anda</p>
-            <a href="#" class="inline-flex items-center text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors duration-300 font-medium">
-              Selengkapnya
-              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
+        <!-- Service 2 -->
+        <div class="group bg-white dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-500/50 dark:hover:border-blue-400/50 shadow-lg dark:shadow-xl transition-all duration-300 hover:-translate-y-2">
+          <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
           </div>
-          
-          <!-- Service 2 -->
-          <div class="group bg-white dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-500/50 dark:hover:border-blue-400/50 shadow-lg dark:shadow-xl transition-all duration-300 hover:-translate-y-2">
-            <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Aplikasi Mobile</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">Aplikasi iOS dan Android yang intuitif dan powerful untuk meningkatkan engagement pengguna</p>
-            <a href="#" class="inline-flex items-center text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors duration-300 font-medium">
-              Selengkapnya
-              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Aplikasi Mobile</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Aplikasi iOS dan Android yang intuitif dan powerful untuk meningkatkan engagement pengguna</p>
+          <a href="#" class="inline-flex items-center text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors duration-300 font-medium">
+            Selengkapnya
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="group bg-white dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-green-500/50 dark:hover:border-green-400/50 shadow-lg dark:shadow-xl transition-all duration-300 hover:-translate-y-2">
+          <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
           </div>
-          
-          <!-- Service 3 -->
-          <div class="group bg-white dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-green-500/50 dark:hover:border-green-400/50 shadow-lg dark:shadow-xl transition-all duration-300 hover:-translate-y-2">
-            <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Digital Marketing</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">Strategi pemasaran digital yang efektif untuk meningkatkan visibilitas dan konversi bisnis Anda</p>
-            <a href="#" class="inline-flex items-center text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors duration-300 font-medium">
-              Selengkapnya
-              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Digital Marketing</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Strategi pemasaran digital yang efektif untuk meningkatkan visibilitas dan konversi bisnis Anda</p>
+          <a href="#" class="inline-flex items-center text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors duration-300 font-medium">
+            Selengkapnya
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <section class="py-12 sm:py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500">
-      <div class="absolute inset-0 bg-white/70 dark:bg-gray-900/90 backdrop-blur-sm"></div>
-      <div class="absolute top-0 left-0 right-0 flex justify-center">
-        <div class="w-full max-w-4xl h-48 sm:h-60 lg:h-72 bg-indigo-200/20 dark:bg-indigo-400/15 rounded-full blur-3xl opacity-70"></div>
+  <!-- CTA Section -->
+  <section class="py-12 sm:py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500">
+    <div class="absolute inset-0 bg-white/70 dark:bg-gray-900/90 backdrop-blur-sm"></div>
+    <div class="absolute top-0 left-0 right-0 flex justify-center">
+      <div class="w-full max-w-4xl h-48 sm:h-60 lg:h-72 bg-indigo-200/20 dark:bg-indigo-400/15 rounded-full blur-3xl opacity-70"></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8 sm:mb-12">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
+          Top Project
+        </h2>
+        <p class="text-base sm:text-xl text-gray-700 dark:text-gray-300 mb-6 sm:mb-10 max-w-2xl mx-auto">
+          Lihat beberapa karya terbaik yang telah kami selesaikan untuk berbagai klien
+        </p>
       </div>
 
-      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-8 sm:mb-12">
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
-            Top Project
-          </h2>
-          <p class="text-base sm:text-xl text-gray-700 dark:text-gray-300 mb-6 sm:mb-10 max-w-2xl mx-auto">
-            Lihat beberapa karya terbaik yang telah kami selesaikan untuk berbagai klien
-          </p>
+      <!-- Project Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Project 1 -->
+        <div class="group relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
+          <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+            <Image src={edufo} alt="Edufo CRM Dashboard" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-2">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7v10c0 5.55 3.84 9.739 9 11 5.16-1.261 9-5.45 9-11V7l-10-5z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">Edufo CRM</h3>
+            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Website Pembelian Aplikasi Whitelabel Payment and Study Education Information (Edufo) Yang Terintegrasi Langsung Ke Aplikasi Mobile.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">TailwindCSS
+                <span class="iconify" data-icon="mdi:tailwind" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-red-100/80 dark:bg-red-900/50 text-red-800 dark:text-red-200 text-xs sm:text-sm rounded-full border border-red-200/50 dark:border-red-800/50">Laravel
+                <span class="iconify" data-icon="mdi:laravel" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">PHP
+                <span class="iconify" data-icon="mdi:language-php" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">Kubernetes
+                <span class="iconify" data-icon="mdi:kubernetes" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">Docker
+                <span class="iconify" data-icon="mdi:docker" data-width="16" data-height="16"></span>
+              </span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">2024</span>
+              <button class="text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-semibold group-hover:translate-x-1 transition-transform duration-300">
+                Lihat Detail →
+              </button>
+            </div>
+          </div>
         </div>
 
-        <!-- Project Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          
-          <!-- Project 1 -->
-          <div class="group relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
-            <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
-              <Image src={edufo} alt="Edufo CRM Dashboard" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-              <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
-              <div class="absolute bottom-4 left-4 text-white">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-2">
-                  <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 9.739 9 11 5.16-1.261 9-5.45 9-11V7l-10-5z"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">Edufo CRM</h3>
-              <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Website Pembelian Aplikasi Whitelabel Payment and Study Education Information (Edufo) Yang Terintegrasi Langsung Ke Aplikasi Mobile.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">TailwindCSS
-                  <span class="iconify" data-icon="mdi:tailwind" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-red-100/80 dark:bg-red-900/50 text-red-800 dark:text-red-200 text-xs sm:text-sm rounded-full border border-red-200/50 dark:border-red-800/50">Laravel
-                  <span class="iconify" data-icon="mdi:laravel" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">PHP
-                  <span class="iconify" data-icon="mdi:language-php" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">Kubernetes
-                  <span class="iconify" data-icon="mdi:kubernetes" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">Docker
-                  <span class="iconify" data-icon="mdi:docker" data-width="16" data-height="16"></span>
-                </span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">2024</span>
-                <button class="text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-semibold group-hover:translate-x-1 transition-transform duration-300">
-                  Lihat Detail →
-                </button>
+        <!-- Project 2 -->
+        <div class="group relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
+          <div class="aspect-video bg-gradient-to-br from-emerald-500 to-teal-600 relative overflow-hidden">
+            <img src="/beranda_kostapp.png" alt="KostApp Project" class="w-full h-full object-cover" loading="lazy" width="800" height="450" />
+            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-2">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                </svg>
               </div>
             </div>
           </div>
-
-          <!-- Project 2 -->
-          <div class="group relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
-            <div class="aspect-video bg-gradient-to-br from-emerald-500 to-teal-600 relative overflow-hidden">
-              <img src="/beranda_kostapp.png" alt="KostApp Project" class="w-full h-full object-cover" loading="lazy" width="800" height="450" />
-              <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
-              <div class="absolute bottom-4 left-4 text-white">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-2">
-                  <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                  </svg>
-                </div>
-              </div>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">KostApp - Pemesanan Kost</h3>
+            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Dashboard real-time untuk monitoring dan analisis Kost Dan Aplikasi Mobile Pemesanan Kos</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">TailwindCSS
+                <span class="iconify" data-icon="mdi:tailwind" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-red-100/80 dark:bg-red-900/50 text-red-800 dark:text-red-200 text-xs sm:text-sm rounded-full border border-red-200/50 dark:border-red-800/50">Laravel
+                <span class="iconify" data-icon="mdi:laravel" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">PHP
+                <span class="iconify" data-icon="mdi:language-php" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-yellow-100/80 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-yellow-200/50 dark:border-yellow-800/50">JavaScript
+                <span class="iconify" data-icon="mdi:language-javascript" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-orange-100/80 dark:bg-orange-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-orange-200/50 dark:border-orange-800/50">Firebase
+                <span class="iconify" data-icon="mdi:firebase" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-gray-100/80 dark:bg-gray-900/50 text-red-800 dark:text-red-200 text-xs sm:text-sm rounded-full border border-gray-200/50 dark:border-gray-800/50">Java & Kotlin
+                <span class="iconify" data-icon="mdi:language-java" data-width="16" data-height="16"></span>
+                <span class="iconify" data-icon="mdi:language-kotlin" data-width="16" data-height="16"></span>
+              </span>
             </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">KostApp - Pemesanan Kost</h3>
-              <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Dashboard real-time untuk monitoring dan analisis Kost Dan Aplikasi Mobile Pemesanan Kos</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">TailwindCSS
-                  <span class="iconify" data-icon="mdi:tailwind" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-red-100/80 dark:bg-red-900/50 text-red-800 dark:text-red-200 text-xs sm:text-sm rounded-full border border-red-200/50 dark:border-red-800/50">Laravel
-                  <span class="iconify" data-icon="mdi:laravel" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">PHP
-                  <span class="iconify" data-icon="mdi:language-php" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-yellow-100/80 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-yellow-200/50 dark:border-yellow-800/50">JavaScript
-                  <span class="iconify" data-icon="mdi:language-javascript" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-orange-100/80 dark:bg-orange-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-orange-200/50 dark:border-orange-800/50">Firebase
-                  <span class="iconify" data-icon="mdi:firebase" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-gray-100/80 dark:bg-gray-900/50 text-red-800 dark:text-red-200 text-xs sm:text-sm rounded-full border border-gray-200/50 dark:border-gray-800/50">Java & Kotlin
-                  <span class="iconify" data-icon="mdi:language-java" data-width="16" data-height="16"></span>
-                  <span class="iconify" data-icon="mdi:language-kotlin" data-width="16" data-height="16"></span>
-                </span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">2024</span>
-                <button class="text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-semibold group-hover:translate-x-1 transition-transform duration-300">
-                  Lihat Detail →
-                </button>
-              </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">2024</span>
+              <button class="text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-semibold group-hover:translate-x-1 transition-transform duration-300">
+                Lihat Detail →
+              </button>
             </div>
           </div>
-
-          <!-- Project 3 -->
-          <div class="group relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
-            <div class="aspect-video bg-gradient-to-br from-rose-500 to-pink-600 relative overflow-hidden">
-              <img src="/Ka.png" alt="Bendahara App Project" class="w-full h-full object-cover" loading="lazy" width="800" height="450" />
-              <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
-              <div class="absolute bottom-4 left-4 text-white">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-2">
-                  <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">Bendahara App</h3>
-              <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Aplikasi & Web untuk manajemen Pemasukan dan Pengeluaran Secara Efektif</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-yellow-100/80 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-yellow-200/50 dark:border-yellow-800/50">JavaScript
-                  <span class="iconify" data-icon="mdi:language-javascript" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-cyan-100/80 dark:bg-cyan-900/50 text-cyan-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-cyan-200/50 dark:border-cyan-800/50">
-                  Flutter<span class="iconify" data-icon="simple-icons:flutter" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-orange-100/80 dark:bg-orange-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-orange-200/50 dark:border-orange-800/50">Firebase
-                  <span class="iconify" data-icon="mdi:firebase" data-width="16" data-height="16"></span>
-                </span>
-                <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-green-100/80 dark:bg-green-900/50 text-green-800 dark:text-green-200 text-xs sm:text-sm rounded-full border border-green-200/50 dark:border-green-800/50">Spreadsheet
-                  <span class="iconify" data-icon="mdi:spreadsheet" data-width="16" data-height="16"></span>
-                </span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">2023</span>
-                <button class="text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-semibold group-hover:translate-x-1 transition-transform duration-300">
-                  Lihat Detail →
-                </button>
-              </div>
-            </div>
-          </div>
-
         </div>
+
+        <!-- Project 3 -->
+        <div class="group relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
+          <div class="aspect-video bg-gradient-to-br from-rose-500 to-pink-600 relative overflow-hidden">
+            <img src="/Ka.png" alt="Bendahara App Project" class="w-full h-full object-cover" loading="lazy" width="800" height="450" />
+            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-2">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">Bendahara App</h3>
+            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Aplikasi & Web untuk manajemen Pemasukan dan Pengeluaran Secara Efektif</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-yellow-100/80 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-yellow-200/50 dark:border-yellow-800/50">JavaScript
+                <span class="iconify" data-icon="mdi:language-javascript" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-cyan-100/80 dark:bg-cyan-900/50 text-cyan-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-cyan-200/50 dark:border-cyan-800/50">
+                Flutter<span class="iconify" data-icon="simple-icons:flutter" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-orange-100/80 dark:bg-orange-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-orange-200/50 dark:border-orange-800/50">Firebase
+                <span class="iconify" data-icon="mdi:firebase" data-width="16" data-height="16"></span>
+              </span>
+              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-green-100/80 dark:bg-green-900/50 text-green-800 dark:text-green-200 text-xs sm:text-sm rounded-full border border-green-200/50 dark:border-green-800/50">Spreadsheet
+                <span class="iconify" data-icon="mdi:spreadsheet" data-width="16" data-height="16"></span>
+              </span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">2023</span>
+              <button class="text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-semibold group-hover:translate-x-1 transition-transform duration-300">
+                Lihat Detail →
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-    <style>
-      .glass-effect {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-      }
-      
-      .dark .glass-effect {
-        background: rgba(31, 41, 55, 0.6);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(75, 85, 99, 0.3);
-      }
-      
-      .gradient-bg {
-        background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
-      }
-      
-      .grid-pattern {
-        background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0);
-        background-size: 50px 50px;
-      }
-      
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-      }
-      
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-      
-      .animate-float-delay {
-        animation: float 6s ease-in-out infinite 2s;
-      }
-      
-      .animate-pulse-delay {
-        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite 1s;
-      }
-      
-      .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-      
-      .animate-on-scroll.visible {
-        opacity: 0.9;
-        transform: translateY(0);
-      }
+  <style>
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .dark .glass-effect {
+      background: rgba(31, 41, 55, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(75, 85, 99, 0.3);
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+    }
+    
+    .grid-pattern {
+      background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0);
+      background-size: 50px 50px;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-float-delay {
+      animation: float 6s ease-in-out infinite 2s;
+    }
+    
+    .animate-pulse-delay {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite 1s;
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 0.9;
+      transform: translateY(0);
+    }
 
-      .slide {
-        opacity: 0;
-        transition: opacity 1000ms;
-      }
-      .slide.active {
-        opacity: 0.9;
-      }
+    .carousel-slide {
+      opacity: 0;
+      transition: opacity 1000ms ease-in-out;
+    }
+    
+    .carousel-slide.active {
+      opacity: 1;
+    }
+    
+    .carousel-dot.active {
+      background-color: rgba(255, 255, 255, 1);
+    }
+  </style>
 
-    </style>
+  <script lang="ts">
+    // Optimized carousel with manual controls
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const totalSlides = slides.length;
+    let carouselInterval;
 
-    <script lang="ts">
-      // Optimized slideshow with requestAnimationFrame
-      let current = 0;
-      const slides = document.querySelectorAll(".slide");
-      const max = slides.length;
+    function showSlide(index) {
+      // Reset all slides and dots
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      // Show current slide and dot
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+      currentSlide = index;
+    }
 
-      function next() {
-        slides[current].classList.remove("active");
-        current = (current + 1) % max;
-        slides[current].classList.add("active");
-      }
+    function nextSlide() {
+      const next = (currentSlide + 1) % totalSlides;
+      showSlide(next);
+    }
 
-      setInterval(next, 3000);
+    function prevSlide() {
+      const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide(prev);
+    }
 
-      // Pause slideshow when tab is not visible
+    function startCarousel() {
+      carouselInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopCarousel() {
+      clearInterval(carouselInterval);
+    }
+
+    // Initialize carousel
+    document.addEventListener('DOMContentLoaded', () => {
+      // Show first slide
+      showSlide(0);
+      
+      // Start automatic carousel
+      startCarousel();
+      
+      // Add event listeners for manual controls
+      document.querySelector('.carousel-next').addEventListener('click', () => {
+        stopCarousel();
+        nextSlide();
+        startCarousel();
+      });
+      
+      document.querySelector('.carousel-prev').addEventListener('click', () => {
+        stopCarousel();
+        prevSlide();
+        startCarousel();
+      });
+      
+      // Add event listeners for dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          stopCarousel();
+          showSlide(index);
+          startCarousel();
+        });
+      });
+      
+      // Pause carousel when tab is not visible
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-          clearInterval(slideInterval);
+          stopCarousel();
         } else {
-          startSlideshow();
+          startCarousel();
         }
       });
+    });
 
-      startSlideshow();
+    // Optimized scroll animation with Intersection Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-      // Optimized scroll animation with Intersection Observer
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
+    }, observerOptions);
 
-      
-    </script>
-  </Layout>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    });
+  </script>
+</Layout>
