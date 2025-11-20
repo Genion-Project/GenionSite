@@ -15,44 +15,35 @@ const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
   <link rel="preload" as="image" href={bg3} />
 
   <section class="relative bg-gray-900 text-white overflow-hidden">
-    <!-- Background Karosel -->
+    <!-- Background Karosel yang Dioptimalkan -->
     <div class="absolute inset-0 overflow-hidden">
       <div class="absolute inset-0">
-        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" data-slide="0" style={`background-image: url(${bg1});`}></div>
-        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" data-slide="1" style={`background-image: url(${bg2});`}></div>
-        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" data-slide="2" style={`background-image: url(${bg3});`}></div>
+        <!-- Gambar pertama langsung load, lainnya menggunakan teknik lazy loading -->
+        <div class="carousel-slide active absolute inset-0 bg-cover bg-center transition-opacity duration-700" style={`background-image: url(${bg1});`}></div>
+        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-700" style={`background-image: url(${bg2});`}></div>
+        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-700" style={`background-image: url(${bg3});`}></div>
       </div>
       <div class="absolute inset-0 bg-black/60"></div>
-      <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-cyan-300/15 rounded-full blur-3xl animate-float"></div>
-      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/20 to-purple-500/15 rounded-full blur-3xl animate-float-delay"></div>
       
-      <!-- Karosel Controls -->
-      <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
-        <button class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-colors duration-300" data-slide="0"></button>
-        <button class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-colors duration-300" data-slide="1"></button>
-        <button class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-colors duration-300" data-slide="2"></button>
+      <!-- Gradient effects yang lebih ringan -->
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/10 to-cyan-300/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/10 to-purple-500/10 rounded-full blur-3xl"></div>
+      
+      <!-- Karosel Controls - tanpa panah, hanya dots -->
+      <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+        <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 hover:bg-white transition-all duration-300 active" data-slide="0"></button>
+        <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 hover:bg-white transition-all duration-300" data-slide="1"></button>
+        <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 hover:bg-white transition-all duration-300" data-slide="2"></button>
       </div>
-      
-      <!-- Navigation Arrows -->
-      <button class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300">
-        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-        </svg>
-      </button>
-      <button class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300">
-        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-        </svg>
-      </button>
     </div>
     
-    <!-- Grid Pattern -->
-    <div class="absolute inset-0 opacity-[0.03] grid-pattern"></div>
+    <!-- Grid Pattern yang lebih sederhana -->
+    <div class="absolute inset-0 opacity-[0.02] bg-grid-pattern"></div>
     
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
         <!-- Left Content -->
-        <div class="animate-on-scroll order-2 lg:order-1">
+        <div class="order-2 lg:order-1">
           <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 mb-6 sm:mb-8 border border-white/20">
             <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
             <span class="text-xs sm:text-sm font-medium text-white">Available for New Projects</span>
@@ -112,12 +103,12 @@ const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
           </div>
         </div>
 
-        <!-- Right Content - Interactive Element -->
-        <div class="relative animate-on-scroll order-1 lg:order-2" style="animation-delay: 0.2s;">
+        <!-- Right Content - Dioptimalkan -->
+        <div class="relative order-1 lg:order-2">
           <div class="relative group max-w-lg mx-auto lg:max-w-none">
-            <div class="glass-effect rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl overflow-hidden transform transition duration-500 group-hover:shadow-3xl animate-float">
+            <div class="glass-effect rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl overflow-hidden transform transition duration-500 group-hover:shadow-3xl">
               <img 
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop"
                 alt="Performance Dashboard"
                 loading="lazy"
                 width="800"
@@ -126,8 +117,6 @@ const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
               />
               <div class="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/10 rounded-xl sm:rounded-2xl pointer-events-none"></div>
             </div>
-            <div class="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-400/30 to-cyan-300/30 rounded-lg sm:rounded-xl blur-xl animate-pulse"></div>
-            <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-tr from-purple-400/30 to-pink-400/30 rounded-lg sm:rounded-xl blur-xl animate-pulse-delay"></div>
           </div>
         </div>
       </div>
@@ -220,7 +209,7 @@ const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
         <!-- Project 1 -->
         <div class="group relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
           <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
-            <Image src={edufo} alt="Edufo CRM Dashboard" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <Image src={edufo} alt="Edufo CRM Dashboard" class="absolute inset-0 w-full h-full object-cover" />
             <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
             <div class="absolute bottom-4 left-4 text-white">
               <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-2">
@@ -242,12 +231,6 @@ const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
               </span>
               <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">PHP
                 <span class="iconify" data-icon="mdi:language-php" data-width="16" data-height="16"></span>
-              </span>
-              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">Kubernetes
-                <span class="iconify" data-icon="mdi:kubernetes" data-width="16" data-height="16"></span>
-              </span>
-              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">Docker
-                <span class="iconify" data-icon="mdi:docker" data-width="16" data-height="16"></span>
               </span>
             </div>
             <div class="flex items-center justify-between">
@@ -285,16 +268,6 @@ const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
               <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm rounded-full border border-blue-200/50 dark:border-blue-800/50">PHP
                 <span class="iconify" data-icon="mdi:language-php" data-width="16" data-height="16"></span>
               </span>
-              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-yellow-100/80 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-yellow-200/50 dark:border-yellow-800/50">JavaScript
-                <span class="iconify" data-icon="mdi:language-javascript" data-width="16" data-height="16"></span>
-              </span>
-              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-orange-100/80 dark:bg-orange-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-orange-200/50 dark:border-orange-800/50">Firebase
-                <span class="iconify" data-icon="mdi:firebase" data-width="16" data-height="16"></span>
-              </span>
-              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-gray-100/80 dark:bg-gray-900/50 text-red-800 dark:text-red-200 text-xs sm:text-sm rounded-full border border-gray-200/50 dark:border-gray-800/50">Java & Kotlin
-                <span class="iconify" data-icon="mdi:language-java" data-width="16" data-height="16"></span>
-                <span class="iconify" data-icon="mdi:language-kotlin" data-width="16" data-height="16"></span>
-              </span>
             </div>
             <div class="flex items-center justify-between">
               <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">2024</span>
@@ -328,12 +301,6 @@ const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
               <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-cyan-100/80 dark:bg-cyan-900/50 text-cyan-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-cyan-200/50 dark:border-cyan-800/50">
                 Flutter<span class="iconify" data-icon="simple-icons:flutter" data-width="16" data-height="16"></span>
               </span>
-              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-orange-100/80 dark:bg-orange-900/50 text-yellow-800 dark:text-yellow-200 text-xs sm:text-sm rounded-full border border-orange-200/50 dark:border-orange-800/50">Firebase
-                <span class="iconify" data-icon="mdi:firebase" data-width="16" data-height="16"></span>
-              </span>
-              <span class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-green-100/80 dark:bg-green-900/50 text-green-800 dark:text-green-200 text-xs sm:text-sm rounded-full border border-green-200/50 dark:border-green-800/50">Spreadsheet
-                <span class="iconify" data-icon="mdi:spreadsheet" data-width="16" data-height="16"></span>
-              </span>
             </div>
             <div class="flex items-center justify-between">
               <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">2023</span>
@@ -365,42 +332,16 @@ const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
       background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
     }
     
-    .grid-pattern {
-      background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0);
+    .bg-grid-pattern {
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
       background-size: 50px 50px;
     }
     
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    
-    .animate-float {
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    .animate-float-delay {
-      animation: float 6s ease-in-out infinite 2s;
-    }
-    
-    .animate-pulse-delay {
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite 1s;
-    }
-    
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    
-    .animate-on-scroll.visible {
-      opacity: 0.9;
-      transform: translateY(0);
-    }
-
     .carousel-slide {
       opacity: 0;
-      transition: opacity 1000ms ease-in-out;
+      transition: opacity 700ms ease-in-out;
     }
     
     .carousel-slide.active {
@@ -409,77 +350,77 @@ const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
     
     .carousel-dot.active {
       background-color: rgba(255, 255, 255, 1);
+      transform: scale(1.2);
+    }
+
+    /* Optimasi performa untuk animasi */
+    @media (prefers-reduced-motion: reduce) {
+      .carousel-slide {
+        transition: none;
+      }
     }
   </style>
 
   <script lang="ts">
-    // Optimized carousel with manual controls
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-dot');
-    const totalSlides = slides.length;
-    let carouselInterval;
+    // Karosel yang sangat dioptimalkan
+    document.addEventListener('DOMContentLoaded', function() {
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots = document.querySelectorAll('.carousel-dot');
+      const totalSlides = slides.length;
+      let carouselInterval;
+      let isTransitioning = false;
 
-    function showSlide(index) {
-      // Reset all slides and dots
-      slides.forEach(slide => slide.classList.remove('active'));
-      dots.forEach(dot => dot.classList.remove('active'));
-      
-      // Show current slide and dot
-      slides[index].classList.add('active');
-      dots[index].classList.add('active');
-      currentSlide = index;
-    }
+      function showSlide(index) {
+        if (isTransitioning) return;
+        
+        isTransitioning = true;
+        
+        // Reset semua slides dan dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Tampilkan slide dan dot saat ini
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+        
+        // Reset flag setelah transisi selesai
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 700);
+      }
 
-    function nextSlide() {
-      const next = (currentSlide + 1) % totalSlides;
-      showSlide(next);
-    }
+      function nextSlide() {
+        const next = (currentSlide + 1) % totalSlides;
+        showSlide(next);
+      }
 
-    function prevSlide() {
-      const prev = (currentSlide - 1 + totalSlides) % totalSlides;
-      showSlide(prev);
-    }
+      function startCarousel() {
+        // Gunakan interval yang lebih lama untuk mengurangi beban
+        carouselInterval = setInterval(nextSlide, 6000);
+      }
 
-    function startCarousel() {
-      carouselInterval = setInterval(nextSlide, 5000);
-    }
+      function stopCarousel() {
+        clearInterval(carouselInterval);
+      }
 
-    function stopCarousel() {
-      clearInterval(carouselInterval);
-    }
-
-    // Initialize carousel
-    document.addEventListener('DOMContentLoaded', () => {
-      // Show first slide
+      // Inisialisasi karosel
       showSlide(0);
-      
-      // Start automatic carousel
       startCarousel();
-      
-      // Add event listeners for manual controls
-      document.querySelector('.carousel-next').addEventListener('click', () => {
-        stopCarousel();
-        nextSlide();
-        startCarousel();
-      });
-      
-      document.querySelector('.carousel-prev').addEventListener('click', () => {
-        stopCarousel();
-        prevSlide();
-        startCarousel();
-      });
-      
-      // Add event listeners for dots
+
+      // Event listeners untuk dots
       dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-          stopCarousel();
-          showSlide(index);
-          startCarousel();
+          if (index !== currentSlide && !isTransitioning) {
+            stopCarousel();
+            showSlide(index);
+            startCarousel();
+          }
         });
       });
-      
-      // Pause carousel when tab is not visible
+
+      // Optimasi: pause karosel saat tab tidak aktif
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           stopCarousel();
@@ -487,25 +428,19 @@ const bg3 = "https://images2.imgbox.com/81/7b/gpKY3uch_o.jpg";
           startCarousel();
         }
       });
-    });
 
-    // Optimized scroll animation with Intersection Observer
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+      // Optimasi: pause karosel saat halaman tidak terlihat
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            startCarousel();
+          } else {
+            stopCarousel();
+          }
+        });
       });
-    }, observerOptions);
 
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+      observer.observe(document.querySelector('.relative.bg-gray-900'));
     });
   </script>
 </Layout>
