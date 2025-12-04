@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.4.0",
+    "@astrojs/sitemap": "^3.6.0",
     "@astrojs/vercel": "^8.2.10",
     "@iconify/react": "^6.0.2",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.15.9",
     "astro-icon": "^1.1.5",
+    "next-sitemap": "^4.2.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

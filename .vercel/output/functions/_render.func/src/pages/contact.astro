@@ -1,0 +1,394 @@
+---
+// src/pages/contact.astro
+import Layout from "../layouts/Layout.astro";
+
+const contactMethods = [
+  {
+    icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
+    title: "Telepon",
+    details: "+62 881-0205-36245",
+    link: "tel:+62881020536245"
+  },
+  {
+    icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+    title: "Email",
+    details: "info@genionteam.com",
+    link: "mailto:info@genionteam.com"
+  },
+  {
+    icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
+    title: "Lokasi",
+    details: "Jakarta, Indonesia",
+    link: "https://maps.app.goo.gl/9a7w36zcf2Z75bAh9"
+  }
+];
+
+const socialMedia = [
+  {
+    name: "LinkedIn",
+    icon: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z",
+    link: "https://linkedin.com/company/genionteam"
+  },
+  {
+    name: "Twitter",
+    icon: "M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z",
+    link: "https://twitter.com/genionteam"
+  },
+  {
+    name: "Instagram",
+    icon: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z",
+    link: "https://instagram.com/genionteam"
+  },
+  {
+    name: "Facebook",
+    icon: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.646c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385c5.736-.9 10.124-5.864 10.124-11.855z",
+    link: "https://facebook.com/genionteam"
+  }
+];
+
+const faqs = [
+  {
+    question: "Berapa lama waktu yang dibutuhkan untuk menyelesaikan proyek?",
+    answer: "Waktu pengerjaan bervariasi tergantung kompleksitas proyek. Proyek website sederhana biasanya 2-4 minggu, sedangkan aplikasi custom bisa memakan waktu 2-6 bulan."
+  },
+  {
+    question: "Apakah menyediakan layanan maintenance setelah proyek selesai?",
+    answer: "Ya, kami menyediakan paket maintenance dan support pasca-launch dengan berbagai pilihan sesuai kebutuhan Anda."
+  },
+  {
+    question: "Bagaimana proses pembayaran proyek?",
+    answer: "Pembayaran biasanya dibagi menjadi beberapa tahap: DP di awal, progres payment, dan pelunasan setelah proyek selesai dan disetujui."
+  },
+  {
+    question: "Apakah bisa request fitur custom?",
+    answer: "Tentu saja! Kami berspesialisasi dalam pengembangan solusi custom yang dirancang khusus sesuai kebutuhan bisnis Anda."
+  }
+];
+---
+
+<Layout title="Kontak Kami - Genion Team Professional" description="Hubungi Genion Team untuk konsultasi dan informasi lebih lanjut tentang layanan teknologi kami">
+  
+  <!-- Hero Section -->
+  <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-br from-blue-500/10 to-teal-500/10 rounded-full blur-3xl animate-float"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+      <div class="inline-flex items-center space-x-2 bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm mb-8 animate-fade-in-down">
+        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+        <span class="font-medium">Kami Siap Membantu</span>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 font-poppins animate-fade-in-up">
+        Hubungi Kami
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
+        Mari berbicara tentang proyek Anda. Tim kami siap membantu mewujudkan solusi digital yang tepat untuk bisnis Anda.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form & Map Section -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <!-- Contact Form -->
+      <div class="animate-on-scroll">
+        <div class="inline-block px-6 py-2 bg-gradient-to-r from-blue-100 to-teal-100 text-white-700 rounded-full text-sm font-bold mb-6">
+          <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          KIRIM PESAN
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight font-poppins">
+          Mari <span class="gradient-text">Berkolaborasi</span>
+        </h2>
+        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+          Isi form di bawah ini dan tim kami akan segera menghubungi Anda kembali. Kami siap membantu menjawab semua pertanyaan Anda.
+        </p>
+
+        <!-- Contact Form -->
+        <form id="contactPageForm" name="contactPageForm" class="space-y-6">
+          <div>
+            <label for="contact_fullname" class="block text-sm font-bold text-gray-900 mb-2">Nama Lengkap</label>
+            <input type="text" 
+                   id="contact_fullname"
+                   name="contact_fullname"
+                   class="w-full px-6 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 text-gray-900 transition-all duration-300"
+                   placeholder="Masukkan nama lengkap Anda"
+                   required>
+          </div>
+
+          <div>
+            <label for="contact_email" class="block text-sm font-bold text-gray-900 mb-2">Email</label>
+            <input type="email" 
+                   id="contact_email"
+                   name="contact_email"
+                   class="w-full px-6 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 text-gray-900 transition-all duration-300"
+                   placeholder="email@contoh.com"
+                   required>
+          </div>
+
+          <div>
+            <label for="contact_phone" class="block text-sm font-bold text-gray-900 mb-2">Nomor Telepon</label>
+            <input type="tel" 
+                   id="contact_phone"
+                   name="contact_phone"
+                   class="w-full px-6 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 text-gray-900 transition-all duration-300"
+                   placeholder="+62 812-3456-7890"
+                   required>
+          </div>
+
+          <div>
+            <label for="contact_subject" class="block text-sm font-bold text-gray-900 mb-2">Subjek</label>
+            <select id="contact_subject" 
+                    name="contact_subject"
+                    class="w-full px-6 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 text-gray-900 transition-all duration-300"
+                    required>
+              <option value="">Pilih subjek</option>
+              <option value="web-development">Pengembangan Web</option>
+              <option value="mobile-app">Aplikasi Mobile</option>
+              <option value="uiux-design">UI/UX Design</option>
+              <option value="digital-marketing">Digital Marketing</option>
+              <option value="cloud-solutions">Cloud Solutions</option>
+              <option value="consultation">Konsultasi IT</option>
+              <option value="other">Lainnya</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="contact_message" class="block text-sm font-bold text-gray-900 mb-2">Pesan</label>
+            <textarea rows="6" 
+                      id="contact_message"
+                      name="contact_message"
+                      class="w-full px-6 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 text-gray-900 resize-none transition-all duration-300"
+                      placeholder="Ceritakan tentang proyek Anda..."
+                      required></textarea>
+          </div>
+
+          <button type="submit" 
+                  id="contactFormSubmitBtn"
+                  class="w-full px-8 py-5 bg-gradient-to-r from-blue-500 to-teal-600 text-white font-bold rounded-xl hover:from-indigo-600 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-3 text-lg">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <span>Kirim Pesan</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Map & Additional Info -->
+      <div class="animate-on-scroll space-y-8">
+        <!-- Map -->
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+          <div class="h-96 bg-gray-200">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8028.774930092462!2d106.94070388001276!3d-6.222482565504365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698d003a0a80c1%3A0xece7e37a6c4d652!2sGenion%20Team%20Office!5e0!3m2!1sen!2sid!4v1761020640090!5m2!1sen!2sid"
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900 mb-1">Kantor Pusat Genion Team</h3>
+                <p class="text-gray-600">Jakarta, Indonesia</p>
+              </div>
+              <a href="https://maps.app.goo.gl/9a7w36zcf2Z75bAh9" target="_blank" class="px-6 py-2 gradient-bg text-white rounded-lg font-semibold hover:opacity-90 transition-opacity duration-300 whitespace-nowrap">
+                Buka di Maps
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 rounded-3xl shadow-xl p-8 text-white">
+          <h3 class="text-2xl font-bold mb-4">Ikuti Kami</h3>
+          <p class="text-gray-300 mb-6">Temukan update terbaru dan promo menarik di media sosial kami</p>
+          <div class="flex gap-4">
+            <a href="https://facebook.com/genionteam" target="_blank" class="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white/20 border border-white/20 transition-all duration-300 hover:scale-110">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.646c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385c5.736-.9 10.124-5.864 10.124-11.855z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/genionteam" target="_blank" class="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white/20 border border-white/20 transition-all duration-300 hover:scale-110">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="https://twitter.com/genionteam" target="_blank" class="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white/20 border border-white/20 transition-all duration-300 hover:scale-110">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/company/genionteam" target="_blank" class="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white/20 border border-white/20 transition-all duration-300 hover:scale-110">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <a href="tel:+62881020536245" target="_blank" class="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white/20 border border-white/20 transition-all duration-300 hover:scale-110">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Office Hours -->
+        <div class="bg-white rounded-3xl shadow-xl p-8">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-teal-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Jam Operasional</h3>
+              <p class="text-gray-600 mb-4">Kami siap melayani Anda</p>
+              <div class="space-y-2">
+                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span class="text-gray-600 font-medium">Senin - Jumat</span>
+                  <span class="font-bold text-gray-900">08:00 - 14:45</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span class="text-gray-600 font-medium">Sabtu</span>
+                  <span class="font-bold text-red-500">Tutup</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                  <span class="text-gray-600 font-medium">Minggu</span>
+                  <span class="font-bold text-red-500">Tutup</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center py-2">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full">
+              <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+              <span class="text-sm font-medium text-green-700">Online Sekarang</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-on-scroll">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4 font-poppins">
+          Pertanyaan <span class="gradient-text">Umum</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Beberapa pertanyaan yang sering diajukan oleh klien kami
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-6">
+        {faqs.map((faq, index) => (
+          <div class="bg-gray-50 rounded-xl p-6 animate-on-scroll">
+            <button class="flex items-center justify-between w-full text-left group" onclick="toggleFAQ({index})">
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">{faq.question}</h3>
+              <svg class="w-5 h-5 text-gray-500 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="mt-4 text-gray-600 hidden">
+              {faq.answer}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-teal-600 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+      <h2 class="text-4xl font-bold text-white mb-6">
+        Siap Memulai Proyek Anda?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Bergabunglah dengan klien-klien kami yang telah mempercayai expertise tim Genion untuk transformasi digital mereka
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="px-8 py-3 bg-white text-indigo-600 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+          Mulai Konsultasi
+        </a>
+        <a href="/services" class="px-8 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 transform hover:-translate-y-1">
+          Lihat Layanan
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero-bg {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  }
+  .gradient-bg {
+    background: linear-gradient(90deg, #5255f0 0%, #53c7fd 100%);
+  }
+  .gradient-text {
+    background: linear-gradient(90deg, #4c44e0, #39befc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    
+    if (animatedElements.length > 0) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      animatedElements.forEach(el => observer.observe(el));
+    }
+  });
+
+</script>

@@ -1,0 +1,129 @@
+/* empty css                                 */
+import { a as createComponent, r as renderComponent, b as renderTemplate, m as maybeRenderHead, d as renderScript, e as addAttribute } from '../chunks/astro/server_BSuLEWao.mjs';
+import { $ as $$Layout } from '../chunks/Layout_D8lDpZqY.mjs';
+/* empty css                                    */
+export { renderers } from '../renderers.mjs';
+
+const $$Services = createComponent(($$result, $$props, $$slots) => {
+  const services = [
+    {
+      title: "Pengembangan Web",
+      description: "Kami membuat website yang responsif, modern, dan SEO-friendly untuk bisnis Anda dengan teknologi terkini.",
+      icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+      features: ["Website Company Profile", "Website E-Commerce", "Landing Page", "Web Application"]
+    },
+    {
+      title: "Pengembangan Aplikasi Mobile",
+      description: "Kembangkan aplikasi mobile iOS dan Android yang powerful dengan performa terbaik untuk bisnis Anda.",
+      icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+      features: ["Aplikasi iOS", "Aplikasi Android", "Cross-Platform", "API Integration"]
+    },
+    {
+      title: "UI/UX Design",
+      description: "Desain antarmuka yang intuitif dan pengalaman pengguna yang memukau untuk produk digital Anda.",
+      icon: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z",
+      features: ["User Research", "Wireframing", "Prototyping", "Design System"]
+    },
+    {
+      title: "Digital Marketing",
+      description: "Tingkatkan visibilitas online dan konversi bisnis Anda dengan strategi digital marketing terbaik.",
+      icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+      features: ["SEO Optimization", "Social Media Management", "Content Marketing"]
+    },
+    {
+      title: "Cloud Solutions",
+      description: "Optimalkan infrastruktur IT bisnis Anda dengan solusi cloud yang scalable dan aman.",
+      icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
+      features: ["Cloud Migration", "Server Management", "Data Backup", "Security Monitoring"]
+    },
+    {
+      title: "Konsultasi IT",
+      description: "Dapatkan solusi dan arahan teknologi yang tepat untuk kebutuhan bisnis Anda dengan konsultasi ahli.",
+      icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+      features: ["IT Strategy", "Digital Transformation", "Technology Roadmap"]
+    }
+  ];
+  const processSteps = [
+    {
+      step: "01",
+      title: "Konsultasi",
+      description: "Kami mendengarkan kebutuhan dan tujuan bisnis Anda untuk memahami permasalahan yang perlu diatasi."
+    },
+    {
+      step: "02",
+      title: "Perencanaan",
+      description: "Kami membuat rencana proyek yang detail dengan timeline, anggaran, dan deliverables yang jelas."
+    },
+    {
+      step: "03",
+      title: "Eksekusi",
+      description: "Tim ahli kami mengerjakan solusi dengan teknologi terkini dan metodologi terbaik."
+    },
+    {
+      step: "04",
+      title: "Pengujian",
+      description: "Kami melakukan pengujian menyeluruh untuk memastikan kualitas dan performa optimal."
+    },
+    {
+      step: "05",
+      title: "Peluncuran",
+      description: "Kami membantu meluncurkan solusi dan memastikan segala sesuatu berjalan dengan baik."
+    },
+    {
+      step: "06",
+      title: "Dukungan",
+      description: "Kami memberikan dukungan pasca-peluncuran dan pemeliharaan untuk kepuasan jangka panjang."
+    }
+  ];
+  const values = [
+    {
+      title: "Inovasi",
+      description: "Selalu mencari cara baru dan kreatif untuk menyelesaikan tantangan teknologi",
+      icon: "M13 10V3L4 14h7v7l9-11h-7z"
+    },
+    {
+      title: "Kolaborasi",
+      description: "Bekerja sama dengan klien sebagai mitra untuk mencapai hasil terbaik",
+      icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+    },
+    {
+      title: "Kualitas",
+      description: "Berkomitmen mengdelivery solusi berkualitas tinggi yang melampaui ekspektasi",
+      icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+    }
+  ];
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Layanan Kami - Genion Team Professional", "description": "Temukan layanan teknologi terbaik dari Genion Team untuk transformasi digital bisnis Anda", "data-astro-cid-ucd2ps2b": true }, { "default": ($$result2) => renderTemplate`  ${maybeRenderHead()}<section class="relative bg-gradient-to-br from-gray-50 via-white to-indigo-50 dark:bg-gradient-to-br dark:from-gray-950 dark:via-gray-900 dark:to-slate-900 text-gray-800 dark:text-white overflow-hidden" data-astro-cid-ucd2ps2b> <!-- Animated Background Elements --> <div class="absolute inset-0 overflow-hidden" data-astro-cid-ucd2ps2b> <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200/40 to-indigo-300/30 dark:from-blue-300/15 dark:to-purple-500/15 rounded-full blur-3xl animate-float" data-astro-cid-ucd2ps2b></div> <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-200/40 to-pink-300/30 dark:from-purple-300/15 dark:to-pink-500/15 rounded-full blur-3xl animate-float" style="animation-delay: 2s;" data-astro-cid-ucd2ps2b></div> <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-indigo-200/30 to-cyan-300/20 dark:from-indigo-300/8 dark:to-cyan-300/8 rounded-full blur-2xl animate-float" style="animation-delay: 4s;" data-astro-cid-ucd2ps2b></div> </div> <!-- Grid Pattern --> <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]" data-astro-cid-ucd2ps2b> <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0); background-size: 50px 50px;" data-astro-cid-ucd2ps2b></div> </div> <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32" data-astro-cid-ucd2ps2b> <div class="text-center animate-on-scroll" data-astro-cid-ucd2ps2b> <div class="inline-flex items-center space-x-2 bg-indigo-100 dark:bg-indigo-500/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-indigo-200 dark:border-indigo-400/30" data-astro-cid-ucd2ps2b> <div class="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse" data-astro-cid-ucd2ps2b></div> <span class="text-sm font-medium text-indigo-700 dark:text-indigo-200" data-astro-cid-ucd2ps2b>Layanan Profesional</span> </div> <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900 dark:text-gray-100" data-astro-cid-ucd2ps2b>
+Layanan <span class="text-cyan-700 dark:text-green-400" data-astro-cid-ucd2ps2b>Kami</span> </h1> <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed" data-astro-cid-ucd2ps2b>
+Solusi teknologi komprehensif yang dirancang khusus untuk membantu bisnis Anda tumbuh dan bersaing di era digital.
+</p> <div class="flex justify-center space-x-4" data-astro-cid-ucd2ps2b> <a href="#services" class="inline-flex items-center justify-center px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-lg shadow-md transition-all duration-300" data-astro-cid-ucd2ps2b>
+Jelajahi Layanan
+<svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-ucd2ps2b> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" data-astro-cid-ucd2ps2b></path> </svg> </a> <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-800 dark:text-white font-semibold rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-white dark:hover:bg-gray-700 transition-all duration-300" data-astro-cid-ucd2ps2b>
+Konsultasi Gratis
+</a> </div> </div> </div> </section>  <section id="services" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300" data-astro-cid-ucd2ps2b> <div class="max-w-7xl mx-auto px-6" data-astro-cid-ucd2ps2b> <div class="text-center mb-16 animate-on-scroll" data-astro-cid-ucd2ps2b> <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4" data-astro-cid-ucd2ps2b>Layanan Profesional Kami</h2> <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" data-astro-cid-ucd2ps2b>
+Berbagai solusi teknologi terintegrasi untuk mendukung transformasi digital bisnis Anda
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-astro-cid-ucd2ps2b> ${services.map((service, index) => renderTemplate`<div class="group bg-white dark:bg-gray-800 backdrop-blur-sm rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:border-cyan-500/50 dark:hover:border-cyan-400/50 shadow-lg dark:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-on-scroll"${addAttribute(`animation-delay: ${index * 0.1}s`, "style")} data-astro-cid-ucd2ps2b> <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" data-astro-cid-ucd2ps2b> <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-ucd2ps2b> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"${addAttribute(service.icon, "d")} data-astro-cid-ucd2ps2b></path> </svg> </div> <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3" data-astro-cid-ucd2ps2b>${service.title}</h3> <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed" data-astro-cid-ucd2ps2b>${service.description}</p> <ul class="space-y-3 mb-6" data-astro-cid-ucd2ps2b> ${service.features.map((feature) => renderTemplate`<li class="flex items-center text-sm text-gray-600 dark:text-gray-400" data-astro-cid-ucd2ps2b> <svg class="w-4 h-4 text-cyan-500 dark:text-cyan-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-ucd2ps2b> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" data-astro-cid-ucd2ps2b></path> </svg> ${feature} </li>`)} </ul> <a href="/contact" class="inline-flex items-center justify-center w-full px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 group-hover:bg-cyan-50 dark:group-hover:bg-cyan-900/20 group-hover:text-cyan-700 dark:group-hover:text-cyan-300" data-astro-cid-ucd2ps2b>
+Diskusi Proyek
+<svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-ucd2ps2b> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" data-astro-cid-ucd2ps2b></path> </svg> </a> </div>`)} </div> </div> </section>  <section class="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300 relative overflow-hidden" data-astro-cid-ucd2ps2b> <div class="absolute inset-0 bg-gradient-to-br from-transparent via-cyan-50/30 to-transparent dark:from-transparent dark:via-cyan-950/20 dark:to-transparent" data-astro-cid-ucd2ps2b></div> <div class="relative z-10 max-w-7xl mx-auto px-6" data-astro-cid-ucd2ps2b> <div class="text-center mb-16 animate-on-scroll" data-astro-cid-ucd2ps2b> <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4" data-astro-cid-ucd2ps2b>Proses Kerja Kami</h2> <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" data-astro-cid-ucd2ps2b>
+Metodologi terstruktur untuk memastikan kesuksesan setiap proyek
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-astro-cid-ucd2ps2b> ${processSteps.map((step, index) => renderTemplate`<div class="text-center animate-on-scroll"${addAttribute(`animation-delay: ${index * 0.1}s`, "style")} data-astro-cid-ucd2ps2b> <div class="relative inline-block mb-6" data-astro-cid-ucd2ps2b> <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 rounded-2xl flex items-center justify-center shadow-lg" data-astro-cid-ucd2ps2b> <span class="text-3xl font-bold text-white" data-astro-cid-ucd2ps2b>${step.step}</span> </div> </div> <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3" data-astro-cid-ucd2ps2b>${step.title}</h3> <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-astro-cid-ucd2ps2b>${step.description}</p> </div>`)} </div> </div> </section>  <section class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300" data-astro-cid-ucd2ps2b> <div class="max-w-7xl mx-auto px-6" data-astro-cid-ucd2ps2b> <div class="text-center mb-16 animate-on-scroll" data-astro-cid-ucd2ps2b> <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4" data-astro-cid-ucd2ps2b>Nilai-Nilai Kami</h2> <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" data-astro-cid-ucd2ps2b>
+Prinsip yang memandu setiap pekerjaan kami
+</p> </div> <div class="grid md:grid-cols-3 gap-8" data-astro-cid-ucd2ps2b> ${values.map((value, index) => renderTemplate`<div class="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-xl hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center animate-on-scroll"${addAttribute(`animation-delay: ${index * 0.1}s`, "style")} data-astro-cid-ucd2ps2b> <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 transform transition-transform duration-300 group-hover:scale-110" data-astro-cid-ucd2ps2b> <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-ucd2ps2b> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"${addAttribute(value.icon, "d")} data-astro-cid-ucd2ps2b></path> </svg> </div> <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3" data-astro-cid-ucd2ps2b>${value.title}</h3> <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-astro-cid-ucd2ps2b>${value.description}</p> </div>`)} </div> </div> </section>  <section class="py-20 relative overflow-hidden bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 dark:from-cyan-700 dark:via-blue-700 dark:to-indigo-800" data-astro-cid-ucd2ps2b> <div class="absolute inset-0 overflow-hidden" data-astro-cid-ucd2ps2b> <div class="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-float" data-astro-cid-ucd2ps2b></div> <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s;" data-astro-cid-ucd2ps2b></div> </div> <div class="relative z-10 max-w-4xl mx-auto px-6 text-center" data-astro-cid-ucd2ps2b> <h2 class="text-4xl font-bold text-white mb-6 animate-on-scroll" data-astro-cid-ucd2ps2b>Siap Memulai Proyek Anda?</h2> <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-on-scroll" style="animation-delay: 0.1s" data-astro-cid-ucd2ps2b>
+Hubungi kami sekarang untuk konsultasi gratis dan wujudkan ide digital Anda
+</p> <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll" style="animation-delay: 0.2s" data-astro-cid-ucd2ps2b> <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-white text-cyan-700 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300" data-astro-cid-ucd2ps2b>
+Hubungi Kami
+<svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-ucd2ps2b> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" data-astro-cid-ucd2ps2b></path> </svg> </a> </div> </div> </section>  ${renderScript($$result2, "/home/linuxdevco/Workspace/Genion_web/src/pages/services.astro?astro&type=script&index=0&lang.ts")} ` })}`;
+}, "/home/linuxdevco/Workspace/Genion_web/src/pages/services.astro", void 0);
+
+const $$file = "/home/linuxdevco/Workspace/Genion_web/src/pages/services.astro";
+const $$url = "/services";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Services,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };
