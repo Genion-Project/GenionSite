@@ -231,7 +231,7 @@ export const Team: React.FC = () => {
               </svg>
             </Link>
             <Link
-              to="/"
+              to="/projects"
               className="inline-flex items-center gap-2 border border-[#0891b2] text-[#0891b2] hover:bg-[#0891b2] hover:text-black font-medium text-sm px-6 py-3 rounded-md transition-all duration-200"
             >
               LIHAT PORTOFOLIO

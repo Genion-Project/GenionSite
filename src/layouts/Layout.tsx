@@ -64,6 +64,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: "Tentang", path: "/about" },
     { name: "Tim", path: "/team" },
     { name: "Layanan", path: "/services" },
+    { name: "Portofolio", path: "/projects" },
   ];
 
 
@@ -314,6 +315,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   { name: "Tentang", path: "/about" },
                   { name: "Tim", path: "/team" },
                   { name: "Layanan", path: "/services" },
+                  { name: "Portofolio", path: "/projects" },
                   { name: "Kontak", path: "/contact" },
                 ].map((link) => (
                   <li key={link.path}>

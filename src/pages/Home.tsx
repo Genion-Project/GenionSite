@@ -385,6 +385,14 @@ export const Home: React.FC = () => {
               </div>
             ))}
           </div>
+          <div className="mt-12 text-center">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 border border-[#0891b2] text-[#0891b2] hover:bg-[#0891b2] hover:text-black font-semibold text-xs font-mono uppercase tracking-wider px-6 py-3 rounded-md transition-all duration-200"
+            >
+              LIHAT SEMUA PROYEK GENION ({">"})
+            </Link>
+          </div>
         </div>
       </section>
 
