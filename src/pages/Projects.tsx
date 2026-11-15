@@ -26,7 +26,7 @@ const TRUST_PARTNERS = [
     logo: "/logo_murata.avif",
   },
   {
-    name: "Yayasan Nuris Edukasi",
+    name: "SMK Nurul Islam Jakarta",
     category: "Learning Management System",
     logo: "/logo_nuris.png",
   },

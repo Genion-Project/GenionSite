@@ -323,7 +323,7 @@ export const projects: ProjectItem[] = [
     category: "Web Development",
     tag: "Education & Portal",
     year: "2024",
-    client: "Yayasan Nuris Edukasi",
+    client: "SMK Nurul Islam Jakarta",
     description:
       "Platform Learning Management System (LMS) modern untuk pembelajaran terstruktur, ujian online anti-curang, dan rapor digital.",
     longDescription:
