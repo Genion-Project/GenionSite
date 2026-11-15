@@ -169,15 +169,15 @@ export const Home: React.FC = () => {
         <meta name="description" content="Genion Team menyediakan solusi teknologi terdepan: Pengembangan Web & Mobile, Digital Marketing, UI/UX Design, Cloud Architecture, dan AI. 30+ proyek selesai, 100% kepuasan klien." />
         <meta property="og:title" content="Genion Team - Solusi Digital Cerdas, Inovatif & Terdepan | Web, Mobile, AI" />
         <meta property="og:description" content="Genion Team menyediakan solusi teknologi terdepan: Pengembangan Web & Mobile, Digital Marketing, UI/UX Design, Cloud Architecture, dan AI. 30+ proyek selesai, 100% kepuasan klien." />
-        <meta property="og:url" content="https://genion.site/" />
+        <meta property="og:url" content="https://genion.vercel.app/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:image" content="https://genion.vercel.app/og-image.webp" />
         <meta property="og:locale" content="id_ID" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Genion Team - Solusi Digital Cerdas, Inovatif & Terdepan | Web, Mobile, AI" />
         <meta name="twitter:description" content="Genion Team menyediakan solusi teknologi terdepan: Pengembangan Web & Mobile, Digital Marketing, UI/UX Design, Cloud Architecture, dan AI. 30+ proyek selesai, 100% kepuasan klien." />
-        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
-        <link rel="canonical" href="https://genion.site/" />
+        <meta name="twitter:image" content="https://genion.vercel.app/og-image.webp" />
+        <link rel="canonical" href="https://genion.vercel.app/" />
       </Helmet>
       {/* ─── SECTION 1: HERO ─── */}
       <section

@@ -211,15 +211,15 @@ export const Projects: React.FC = () => {
         <meta name="description" content="Jelajahi portofolio lengkap Genion Team: Edufo CRM, KOSTAPP, AI Chatbot, IoT Dashboard, dan berbagai platform enterprise. Solusi terbukti untuk berbagai industri." />
         <meta property="og:title" content="Portofolio Proyek - 30+ Solusi Digital Terpercaya | Genion Team" />
         <meta property="og:description" content="Jelajahi portofolio lengkap Genion Team: Edufo CRM, KOSTAPP, AI Chatbot, IoT Dashboard, dan berbagai platform enterprise. Solusi terbukti untuk berbagai industri." />
-        <meta property="og:url" content="https://genion.site/projects" />
+        <meta property="og:url" content="https://genion.vercel.app/projects" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:image" content="https://genion.vercel.app/og-image.webp" />
         <meta property="og:locale" content="id_ID" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Portofolio Proyek - 30+ Solusi Digital Terpercaya | Genion Team" />
         <meta name="twitter:description" content="Jelajahi portofolio lengkap Genion Team: Edufo CRM, KOSTAPP, AI Chatbot, IoT Dashboard, dan berbagai platform enterprise. Solusi terbukti untuk berbagai industri." />
-        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
-        <link rel="canonical" href="https://genion.site/projects" />
+        <meta name="twitter:image" content="https://genion.vercel.app/og-image.webp" />
+        <link rel="canonical" href="https://genion.vercel.app/projects" />
       </Helmet>
       {/* ─── SECTION 1: HERO ─── */}
       <section

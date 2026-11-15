@@ -172,15 +172,15 @@ export const Team: React.FC = () => {
         <meta name="description" content="Bertemu dengan para inovator di balik solusi digital Genion: Nafil Habibi (CIO), Muhammad Yusuf (Fullstack), Stanly Andrian (Cloud Engineer), dan 8 profesional lainnya." />
         <meta property="og:title" content="Tim Kami - 11 Profesional Teknologi Berdedikasi | Genion Team" />
         <meta property="og:description" content="Bertemu dengan para inovator di balik solusi digital Genion: Nafil Habibi (CIO), Muhammad Yusuf (Fullstack), Stanly Andrian (Cloud Engineer), dan 8 profesional lainnya." />
-        <meta property="og:url" content="https://genion.site/team" />
+        <meta property="og:url" content="https://genion.vercel.app/team" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:image" content="https://genion.vercel.app/og-image.webp" />
         <meta property="og:locale" content="id_ID" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tim Kami - 11 Profesional Teknologi Berdedikasi | Genion Team" />
         <meta name="twitter:description" content="Bertemu dengan para inovator di balik solusi digital Genion: Nafil Habibi (CIO), Muhammad Yusuf (Fullstack), Stanly Andrian (Cloud Engineer), dan 8 profesional lainnya." />
-        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
-        <link rel="canonical" href="https://genion.site/team" />
+        <meta name="twitter:image" content="https://genion.vercel.app/og-image.webp" />
+        <link rel="canonical" href="https://genion.vercel.app/team" />
       </Helmet>
       {/* ─── SECTION 1: HERO ─── */}
       <section

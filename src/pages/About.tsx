@@ -171,15 +171,15 @@ export const About: React.FC = () => {
         <meta name="description" content="Kenali Genion Team, tim profesional berdedikasi dengan 11 anggota ahli, 30+ proyek selesai, dan 2+ tahun pengalaman dalam solusi digital modern." />
         <meta property="og:title" content="Tentang Kami - Tim Inovasi Teknologi | Genion Team" />
         <meta property="og:description" content="Kenali Genion Team, tim profesional berdedikasi dengan 11 anggota ahli, 30+ proyek selesai, dan 2+ tahun pengalaman dalam solusi digital modern." />
-        <meta property="og:url" content="https://genion.site/about" />
+        <meta property="og:url" content="https://genion.vercel.app/about" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:image" content="https://genion.vercel.app/og-image.webp" />
         <meta property="og:locale" content="id_ID" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tentang Kami - Tim Inovasi Teknologi | Genion Team" />
         <meta name="twitter:description" content="Kenali Genion Team, tim profesional berdedikasi dengan 11 anggota ahli, 30+ proyek selesai, dan 2+ tahun pengalaman dalam solusi digital modern." />
-        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
-        <link rel="canonical" href="https://genion.site/about" />
+        <meta name="twitter:image" content="https://genion.vercel.app/og-image.webp" />
+        <link rel="canonical" href="https://genion.vercel.app/about" />
       </Helmet>
       {/* ─── SECTION 1: HERO ─── */}
       <section

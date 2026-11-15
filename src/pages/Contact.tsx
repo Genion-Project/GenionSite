@@ -85,10 +85,10 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Genion Team",
-  image: "https://genion.site/genion_team.webp",
+  image: "https://genion.vercel.app/genion_team.webp",
   telephone: "+62-881-0250-36245",
   email: "nafilhabibi07@gmail.com",
-  url: "https://genion.site",
+  url: "https://genion.vercel.app",
   priceRange: "$$",
   openingHours: "Mo-Fr 09:00-17:00",
   address: {
@@ -211,15 +211,15 @@ export const Contact: React.FC = () => {
         <meta name="description" content="Mulai kolaborasi digital dengan Genion Team. Hubungi kami via WhatsApp 0881-0250-36245, email nafilhabibi07@gmail.com, atau kunjungi kantor kami untuk konsultasi gratis." />
         <meta property="og:title" content="Hubungi Kami - Konsultasi Gratis Proyek Digital | Genion Team" />
         <meta property="og:description" content="Mulai kolaborasi digital dengan Genion Team. Hubungi kami via WhatsApp 0881-0250-36245, email nafilhabibi07@gmail.com, atau kunjungi kantor kami untuk konsultasi gratis." />
-        <meta property="og:url" content="https://genion.site/contact" />
+        <meta property="og:url" content="https://genion.vercel.app/contact" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:image" content="https://genion.vercel.app/og-image.webp" />
         <meta property="og:locale" content="id_ID" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hubungi Kami - Konsultasi Gratis Proyek Digital | Genion Team" />
         <meta name="twitter:description" content="Mulai kolaborasi digital dengan Genion Team. Hubungi kami via WhatsApp 0881-0250-36245, email nafilhabibi07@gmail.com, atau kunjungi kantor kami untuk konsultasi gratis." />
-        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
-        <link rel="canonical" href="https://genion.site/contact" />
+        <meta name="twitter:image" content="https://genion.vercel.app/og-image.webp" />
+        <link rel="canonical" href="https://genion.vercel.app/contact" />
         <script type="application/ld+json">
           {JSON.stringify(localBusinessSchema)}
         </script>

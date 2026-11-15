@@ -231,15 +231,15 @@ export const Services: React.FC = () => {
         <meta name="description" content="6 layanan digital profesional: Web Development, Mobile App, Digital Marketing, UI/UX Design, Frontend Development, dan Cloud Solutions. Standar enterprise, hasil terpercaya." />
         <meta property="og:title" content="Layanan Kami - Web Development, Mobile App, UI/UX Design | Genion Team" />
         <meta property="og:description" content="6 layanan digital profesional: Web Development, Mobile App, Digital Marketing, UI/UX Design, Frontend Development, dan Cloud Solutions. Standar enterprise, hasil terpercaya." />
-        <meta property="og:url" content="https://genion.site/services" />
+        <meta property="og:url" content="https://genion.vercel.app/services" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:image" content="https://genion.vercel.app/og-image.webp" />
         <meta property="og:locale" content="id_ID" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Layanan Kami - Web Development, Mobile App, UI/UX Design | Genion Team" />
         <meta name="twitter:description" content="6 layanan digital profesional: Web Development, Mobile App, Digital Marketing, UI/UX Design, Frontend Development, dan Cloud Solutions. Standar enterprise, hasil terpercaya." />
-        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
-        <link rel="canonical" href="https://genion.site/services" />
+        <meta name="twitter:image" content="https://genion.vercel.app/og-image.webp" />
+        <link rel="canonical" href="https://genion.vercel.app/services" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -249,7 +249,7 @@ export const Services: React.FC = () => {
             "provider": {
               "@type": "Organization",
               "name": "Genion Team",
-              "url": "https://genion.site"
+              "url": "https://genion.vercel.app"
             },
             "itemListElement": SERVICES.map((service, index) => ({
               "@type": "Offer",

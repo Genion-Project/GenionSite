@@ -22,8 +22,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Genion Team",
-  url: "https://genion.site",
-  logo: "https://genion.site/genion_logo.png",
+  url: "https://genion.vercel.app",
+  logo: "https://genion.vercel.app/genion_logo.png",
   description:
     "Tim inovasi teknologi yang menghadirkan solusi digital terdepan di bidang Web Development, Mobile App, UI/UX Design, Cloud Architecture, dan AI Solutions.",
   foundingDate: "2023",
