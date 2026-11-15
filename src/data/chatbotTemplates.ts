@@ -60,7 +60,7 @@ export function getBotTemplateResponse(userInput: string): TemplateResponse {
 
   if (/\b(yusuf|yf)\b/.test(q)) {
     return {
-      text: "**Muhammad Yusuf** adalah **Backend & Fullstack Developer** di Genion Team.\n\n• Peran: Spesialis arsitektur backend, RESTful API, dan optimasi database performa tinggi.\n• Keahlian Utama: *Laravel, PHP, PostgreSQL, Python, Astro, Tailwind CSS, dan Figma*.\n• Fokus: Membangun sistem yang handal, cepat, dan aman untuk kebutuhan aplikasi skala besar.",
+      text: "**Muhammad Yusuf** adalah **Fullstack Developer** di Genion Team.\n\n• Peran: Spesialis arsitektur backend, RESTful API, dan optimasi database performa tinggi.\n• Keahlian Utama: *Laravel, PHP, PostgreSQL, Python, Astro, Tailwind CSS, dan Figma*.\n• Fokus: Membangun sistem yang handal, cepat, dan aman untuk kebutuhan aplikasi skala besar.",
       actions: [
         { label: "Lihat Profil Tim", url: "/team" },
         { label: "Portofolio Proyek", query: "Apa saja portofolio Genion?" },
@@ -75,10 +75,13 @@ export function getBotTemplateResponse(userInput: string): TemplateResponse {
     };
   }
 
-  if (/\b(stanly|andrian)\b/.test(q)) {
+  if (/\b(stanly|stanley|andrian)\b/.test(q)) {
     return {
-      text: "**Stanly Andrian Pratama** adalah **Backend Developer** di Genion Team.\n\n• Keahlian Utama: *C++, MySQL, AWS Cloud, Rust, dan Full Stack Development*.\n• Fokus: Specialist arsitektur sistem tingkat lanjut, konkurensi, dan optimasi database.",
-      actions: [{ label: "Lihat Tim", url: "/team" }],
+      text: "**Stanly Andrian Pratama** adalah **Cloud Engineer** di Genion Team.\n\n• Keahlian Utama: *AWS Cloud, Cloud Architecture, Docker, MySQL, C++, dan Rust*.\n• Fokus: Specialist arsitektur cloud scalable, infrastruktur server, dan database optimization.",
+      actions: [
+        { label: "Buka Profil", url: "/profile/GENION-04" },
+        { label: "Lihat Tim", url: "/team" },
+      ],
     };
   }
 
@@ -240,7 +243,7 @@ export function getBotTemplateResponse(userInput: string): TemplateResponse {
   // 9. Team Overview
   if (/\b(tim|team|anggota|member|pendiri|founder|ceo|struktur)\b/.test(q)) {
     return {
-      text: "**Tim Profesional Genion**\n\nGenion Team beranggotakan para talenta teknologi berdedikasi:\n\n• **Nafil Habibi Mulyadi** — Founder & Chief Innovation Officer\n• **Muhammad Yusuf** — Backend & Fullstack Developer\n• **Boy Cahya Madinah** — Quality Control (QC)\n• **Stanly Andrian Pratama** — Backend Developer\n• **Mifzal Arif & Rafa Silmi** — UI/UX Designers\n• **Ammar Ashim, Rizky Bima, Yusnaldi Rafiq** — Frontend Developers\n• **Ramadanu** — Full Stack Developer\n• **Chacha Pelangi Parawansha** — Digital Marketing Specialist",
+      text: "**Tim Profesional Genion**\n\nGenion Team beranggotakan para talenta teknologi berdedikasi:\n\n• **Nafil Habibi Mulyadi** — Founder & Chief Innovation Officer\n• **Muhammad Yusuf** — Fullstack Developer\n• **Boy Cahya Madinah** — Quality Control (QC)\n• **Stanly Andrian Pratama** — Cloud Engineer\n• **Mifzal Arif & Rafa Silmi** — UI/UX Designers\n• **Ammar Ashim, Rizky Bima, Yusnaldi Rafiq** — Frontend Developers\n• **Ramadanu** — Full Stack Developer\n• **Chacha Pelangi Parawansha** — Digital Marketing Specialist",
       actions: [
         { label: "Buka Halaman Tim", url: "/team" },
         { label: "Tentang Kami", url: "/about" },
@@ -298,9 +301,10 @@ export function getBotTemplateResponse(userInput: string): TemplateResponse {
   // 14. Sub-services: Cloud
   if (/\b(cloud|server|aws|hosting|devops|migrasi)\b/.test(q)) {
     return {
-      text: "**Solusi Cloud & Infrastruktur Server**\n\nOptimalkan performa, keamanan, dan keandalan sistem Anda:\n\n• Migrasi hosting/server ke arsitektur cloud scalable (AWS / VPS).\n• Manajemen database, backup otomatis berkala, dan failover protection.\n• Konfigurasi domain, sertifikat SSL, dan perlindungan keamanan server.",
+      text: "**Solusi Cloud & Infrastruktur Server**\n\nOptimalkan performa, keamanan, dan keandalan sistem Anda bersama tim Cloud Engineering Genion:\n\n• Migrasi hosting/server ke arsitektur cloud scalable (AWS / VPS).\n• Manajemen database, backup otomatis berkala, dan failover protection.\n• Konfigurasi domain, sertifikat SSL, dan perlindungan keamanan server.",
       actions: [
         { label: "Halaman Layanan", url: "/services" },
+        { label: "Profil Cloud Engineer", url: "/profile/GENION-04" },
         { label: "Konsultasi Cloud (WA)", url: WA_URL, isExternal: true },
       ],
     };

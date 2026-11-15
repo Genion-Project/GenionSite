@@ -28,11 +28,12 @@ const parseMemberIndex = (paramId: string | undefined): number => {
     }
   }
 
-  // Name / slug match fallback: "nafil", "yusuf", "stanly", etc.
+  // Name / slug match fallback: "nafil", "yusuf", "stanly", "stanley", etc.
   const normalized = clean.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const searchNorm = normalized.replace(/stanley/g, "stanly");
   const foundIndex = allMembers.findIndex((m) => {
     const mNorm = m.name.toLowerCase().replace(/[^a-z0-9]/g, "");
-    return mNorm.includes(normalized) || normalized.includes(mNorm);
+    return mNorm.includes(searchNorm) || searchNorm.includes(mNorm);
   });
   if (foundIndex !== -1) return foundIndex;
 
@@ -54,13 +55,22 @@ const getDepartmentInfo = (role: string) => {
         "Mengarahkan visi teknologi, membangun kemitraan berdampak tinggi, dan memastikan setiap inisiatif Genion selaras dengan standar inovasi modern.",
     };
   }
+  if (r.includes("cloud") || r.includes("infrastruktur") || r.includes("infrastructure") || r.includes("devops")) {
+    return {
+      department: "Infrastruktur & Cloud",
+      tag: "CLOUD INFRASTRUCTURE",
+      focusTitle: "Arsitektur Cloud & Keandalan Sistem",
+      focusDesc:
+        "Merancang arsitektur cloud yang scalable, otomatisasi server, keamanan sistem, serta menjamin keandalan operasional infrastruktur performa tinggi.",
+    };
+  }
   if (r.includes("backend")) {
     return {
-      department: "Rekayasa Backend & Cloud",
-      tag: "ENGINEERING",
+      department: "Rekayasa Backend",
+      tag: "BACKEND ENGINEERING",
       focusTitle: "Arsitektur Sistem & Ketahanan Data",
       focusDesc:
-        "Merancang arsitektur API yang aman, optimasi basis data skala tinggi, dan keandalan sistem cloud untuk performa tanpa hambatan.",
+        "Merancang arsitektur API yang aman, optimasi basis data skala tinggi, dan keandalan sistem server untuk performa tanpa hambatan.",
     };
   }
   if (r.includes("frontend")) {
@@ -72,7 +82,7 @@ const getDepartmentInfo = (role: string) => {
         "Mewujudkan antarmuka modern yang cepat, ramah pengguna, dan konsisten di seluruh perangkat dengan standar kode modern.",
     };
   }
-  if (r.includes("full stack")) {
+  if (r.includes("full stack") || r.includes("fullstack")) {
     return {
       department: "Rekayasa Full-Stack",
       tag: "FULL STACK",

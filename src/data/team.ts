@@ -33,16 +33,16 @@ export const coreTeam: TeamMember[] = [
 export const teamMembers: TeamMember[] = [
   {
     name: "Muhammad Yusuf", 
-    role: "Backend Developer",
+    role: "Fullstack Developer",
     description: "Expert teknologi yang menghadirkan solusi inovatif terdepan dengan fokus pada user experience",
-    skills: ["Laravel", "PHP", "PostgreSQL", "Figma", "Astro", "Python", "Tailwind CSS"],
+    skills: ["Laravel", "PHP", "PostgreSQL", "Figma", "React", "Python", "Tailwind CSS", "Node.js", "Express.js"],
     initials: "YF",
     color: "from-cyan-500 to-blue-600",
     image: "/yusuf.jpeg",
-    linkedin: "#",
-    instagram: "#",
+    linkedin: "https://www.linkedin.com/in/muhammad-yusuf-24892236a",
+    instagram: "https://www.instagram.com/hdmmyusuf",
     twitter: "#",
-    email: "yusuf@genion.com"
+    email: "hahayusuf692@gmail.com"
   },
   {
     name: "Boy Cahya Madinah",
@@ -59,9 +59,9 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Stanly Andrian Pratama",
-    role: "Backend Developer",
-    description: "Specialist dalam arsitektur sistem dan database optimization",
-    skills: ["C++", "MySQL", "AWS", "Rust", "Full Stack"],
+    role: "Cloud Engineer",
+    description: "Specialist dalam arsitektur cloud, skalabilitas infrastruktur, dan database optimization",
+    skills: ["AWS Cloud", "Cloud Architecture", "Docker", "MySQL", "C++", "Rust"],
     initials: "SAP",
     color: "from-cyan-500 to-blue-600",
     image: "/stanly.png",
