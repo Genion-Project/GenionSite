@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -225,6 +226,48 @@ export const Services: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Layanan Kami - Web Development, Mobile App, UI/UX Design | Genion Team</title>
+        <meta name="description" content="6 layanan digital profesional: Web Development, Mobile App, Digital Marketing, UI/UX Design, Frontend Development, dan Cloud Solutions. Standar enterprise, hasil terpercaya." />
+        <meta property="og:title" content="Layanan Kami - Web Development, Mobile App, UI/UX Design | Genion Team" />
+        <meta property="og:description" content="6 layanan digital profesional: Web Development, Mobile App, Digital Marketing, UI/UX Design, Frontend Development, dan Cloud Solutions. Standar enterprise, hasil terpercaya." />
+        <meta property="og:url" content="https://genion.site/services" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:locale" content="id_ID" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Layanan Kami - Web Development, Mobile App, UI/UX Design | Genion Team" />
+        <meta name="twitter:description" content="6 layanan digital profesional: Web Development, Mobile App, Digital Marketing, UI/UX Design, Frontend Development, dan Cloud Solutions. Standar enterprise, hasil terpercaya." />
+        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
+        <link rel="canonical" href="https://genion.site/services" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "OfferCatalog",
+            "name": "Layanan Digital Genion Team",
+            "description": "Layanan pengembangan web, mobile app, UI/UX design, digital marketing, cloud solutions, dan konsultasi IT profesional",
+            "provider": {
+              "@type": "Organization",
+              "name": "Genion Team",
+              "url": "https://genion.site"
+            },
+            "itemListElement": SERVICES.map((service, index) => ({
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": service.title,
+                "description": service.description,
+                "serviceType": service.title,
+                "provider": {
+                  "@type": "Organization",
+                  "name": "Genion Team"
+                }
+              },
+              "position": index + 1
+            }))
+          })}
+        </script>
+      </Helmet>
       {/* ─── SECTION 1: HERO ─── */}
       <section
         ref={heroRef}

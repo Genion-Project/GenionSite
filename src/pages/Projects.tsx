@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -205,6 +206,21 @@ export const Projects: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Portofolio Proyek - 30+ Solusi Digital Terpercaya | Genion Team</title>
+        <meta name="description" content="Jelajahi portofolio lengkap Genion Team: Edufo CRM, KOSTAPP, AI Chatbot, IoT Dashboard, dan berbagai platform enterprise. Solusi terbukti untuk berbagai industri." />
+        <meta property="og:title" content="Portofolio Proyek - 30+ Solusi Digital Terpercaya | Genion Team" />
+        <meta property="og:description" content="Jelajahi portofolio lengkap Genion Team: Edufo CRM, KOSTAPP, AI Chatbot, IoT Dashboard, dan berbagai platform enterprise. Solusi terbukti untuk berbagai industri." />
+        <meta property="og:url" content="https://genion.site/projects" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:locale" content="id_ID" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Portofolio Proyek - 30+ Solusi Digital Terpercaya | Genion Team" />
+        <meta name="twitter:description" content="Jelajahi portofolio lengkap Genion Team: Edufo CRM, KOSTAPP, AI Chatbot, IoT Dashboard, dan berbagai platform enterprise. Solusi terbukti untuk berbagai industri." />
+        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
+        <link rel="canonical" href="https://genion.site/projects" />
+      </Helmet>
       {/* ─── SECTION 1: HERO ─── */}
       <section
         ref={heroRef}
@@ -410,6 +426,7 @@ export const Projects: React.FC = () => {
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -502,6 +519,7 @@ export const Projects: React.FC = () => {
                     src={partner.logo}
                     alt={partner.name}
                     className="max-h-full max-w-full object-contain"
+                    loading="lazy"
                   />
                 </div>
                 <h4 className="font-poppins font-bold text-gray-900 dark:text-white text-sm mb-1">
@@ -598,6 +616,7 @@ export const Projects: React.FC = () => {
                 src={selectedProject.image}
                 alt={selectedProject.title}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
               <div className="absolute top-3 left-3 flex flex-wrap gap-2">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-[#0891b2] bg-black/80 backdrop-blur-md border border-[#0891b2]/30 px-2.5 py-1 rounded">

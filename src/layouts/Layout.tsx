@@ -18,6 +18,37 @@ export const ScrollToTop: React.FC = () => {
   return null;
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Genion Team",
+  url: "https://genion.site",
+  logo: "https://genion.site/genion_logo.png",
+  description:
+    "Tim inovasi teknologi yang menghadirkan solusi digital terdepan di bidang Web Development, Mobile App, UI/UX Design, Cloud Architecture, dan AI Solutions.",
+  foundingDate: "2023",
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+62-881-0250-36245",
+      contactType: "customer service",
+      email: "nafilhabibi07@gmail.com",
+      areaServed: "ID",
+      availableLanguage: ["id", "en"]
+    }
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Jakarta",
+    addressCountry: "ID"
+  },
+  sameAs: [
+    "https://twitter.com/genionteam",
+    "https://linkedin.com/company/genionteam",
+    "https://instagram.com/genionteam"
+  ]
+};
+
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -382,6 +413,13 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <p className="text-gray-600 text-xs">Designed with ♥ by Genion Team</p>
           </div>
         </div>
+        {/* Organization Structured Data (JSON-LD) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema)
+          }}
+        />
       </footer>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { allMembers, type TeamMember } from "../data/team";
@@ -311,6 +312,22 @@ export const Profile: React.FC = () => {
   // ─── NOT FOUND STATE ───
   if (!member || memberIndex === -1) {
     return (
+      <>
+        <Helmet>
+          <title>Profil Tidak Ditemukan | Genion Team</title>
+          <meta name="description" content="Profil anggota tim tidak ditemukan. Kembali ke halaman tim untuk melihat semua anggota Genion Team." />
+          <meta property="og:title" content="Profil Tidak Ditemukan | Genion Team" />
+          <meta property="og:description" content="Profil anggota tim tidak ditemukan. Kembali ke halaman tim untuk melihat semua anggota Genion Team." />
+          <meta property="og:url" content={`https://genion.site/profile/${id || ''}`} />
+          <meta property="og:type" content="website" />
+          <meta property="og:image" content="https://genion.site/og-image.webp" />
+          <meta property="og:locale" content="id_ID" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Profil Tidak Ditemukan | Genion Team" />
+          <meta name="twitter:description" content="Profil anggota tim tidak ditemukan. Kembali ke halaman tim untuk melihat semua anggota Genion Team." />
+          <meta name="twitter:image" content="https://genion.site/og-image.webp" />
+          <link rel="canonical" href={`https://genion.site/profile/${id || ''}`} />
+        </Helmet>
       <section className="min-h-screen bg-white dark:bg-[#0d0d0d] pt-36 sm:pt-44 pb-24 px-6 flex items-center justify-center relative overflow-hidden">
         {/* Subtle radial glow */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_60%_at_50%_35%,rgba(8,145,178,0.08),transparent)]" />
@@ -373,6 +390,7 @@ export const Profile: React.FC = () => {
           </div>
         </div>
       </section>
+      </>
     );
   }
 
@@ -420,6 +438,38 @@ export const Profile: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{member.name} - {member.role} | Genion Team</title>
+        <meta name="description" content={`${member.description} Keahlian: ${member.skills.join(', ')}`} />
+        <meta property="og:title" content={`${member.name} - ${member.role} | Genion Team`} />
+        <meta property="og:description" content={`${member.description} Keahlian: ${member.skills.join(', ')}`} />
+        <meta property="og:url" content={`https://genion.site/profile/${id}`} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:image" content={`https://genion.site${member.image}`} />
+        <meta property="og:locale" content="id_ID" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${member.name} - ${member.role} | Genion Team`} />
+        <meta name="twitter:description" content={`${member.description} Keahlian: ${member.skills.join(', ')}`} />
+        <meta name="twitter:image" content={`https://genion.site${member.image}`} />
+        <link rel="canonical" href={`https://genion.site/profile/${id}`} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": member.name,
+            "jobTitle": member.role,
+            "description": member.description,
+            "image": `https://genion.site${member.image}`,
+            ...(hasValidEmail && { "email": member.email }),
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Genion Team",
+              "url": "https://genion.site"
+            },
+            "knowsAbout": member.skills
+          })}
+        </script>
+      </Helmet>
       {/* ─── SECTION 1: HERO & BREADCRUMBS ─── */}
       <section
         ref={heroRef}
@@ -594,6 +644,7 @@ export const Profile: React.FC = () => {
                     alt={member.name}
                     onError={() => setImgError(true)}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
                   />
                 ) : (
                   <div className={`w-full h-full bg-gradient-to-br ${member.color} flex flex-col items-center justify-center text-white p-6`}>
@@ -1017,6 +1068,7 @@ export const Profile: React.FC = () => {
                       src={other.image}
                       alt={other.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center font-bold text-2xl text-gray-400">

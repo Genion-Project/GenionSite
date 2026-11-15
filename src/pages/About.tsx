@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -62,7 +63,7 @@ const FOUNDER_MEMBERS: FounderMember[] = [
     skills: ["Figma", "Canva", "Content Strategy"],
     initials: "CP",
     color: "from-orange-500 to-red-600",
-    image: "/chacha.png",
+    image: "/chacha.webp",
     linkedin: "#",
     twitter: "#",
     email: "chacha@genion.com"
@@ -165,6 +166,21 @@ export const About: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Tentang Kami - Tim Inovasi Teknologi | Genion Team</title>
+        <meta name="description" content="Kenali Genion Team, tim profesional berdedikasi dengan 11 anggota ahli, 30+ proyek selesai, dan 2+ tahun pengalaman dalam solusi digital modern." />
+        <meta property="og:title" content="Tentang Kami - Tim Inovasi Teknologi | Genion Team" />
+        <meta property="og:description" content="Kenali Genion Team, tim profesional berdedikasi dengan 11 anggota ahli, 30+ proyek selesai, dan 2+ tahun pengalaman dalam solusi digital modern." />
+        <meta property="og:url" content="https://genion.site/about" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:locale" content="id_ID" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tentang Kami - Tim Inovasi Teknologi | Genion Team" />
+        <meta name="twitter:description" content="Kenali Genion Team, tim profesional berdedikasi dengan 11 anggota ahli, 30+ proyek selesai, dan 2+ tahun pengalaman dalam solusi digital modern." />
+        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
+        <link rel="canonical" href="https://genion.site/about" />
+      </Helmet>
       {/* ─── SECTION 1: HERO ─── */}
       <section
         ref={heroRef}
@@ -421,6 +437,7 @@ export const About: React.FC = () => {
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
 

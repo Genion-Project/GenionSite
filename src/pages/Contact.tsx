@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -79,6 +80,36 @@ const FAQS = [
     answer: "Tentu saja! Kami berspesialisasi dalam pengembangan solusi custom yang dirancang khusus sesuai kebutuhan bisnis Anda."
   }
 ];
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Genion Team",
+  image: "https://genion.site/genion_team.webp",
+  telephone: "+62-881-0250-36245",
+  email: "nafilhabibi07@gmail.com",
+  url: "https://genion.site",
+  priceRange: "$$",
+  openingHours: "Mo-Fr 09:00-17:00",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Jakarta",
+    addressCountry: "ID"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer
+    }
+  }))
+};
 
 export const Contact: React.FC = () => {
   const [formState, setFormState] = useState({
@@ -175,6 +206,27 @@ export const Contact: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Hubungi Kami - Konsultasi Gratis Proyek Digital | Genion Team</title>
+        <meta name="description" content="Mulai kolaborasi digital dengan Genion Team. Hubungi kami via WhatsApp 0881-0250-36245, email nafilhabibi07@gmail.com, atau kunjungi kantor kami untuk konsultasi gratis." />
+        <meta property="og:title" content="Hubungi Kami - Konsultasi Gratis Proyek Digital | Genion Team" />
+        <meta property="og:description" content="Mulai kolaborasi digital dengan Genion Team. Hubungi kami via WhatsApp 0881-0250-36245, email nafilhabibi07@gmail.com, atau kunjungi kantor kami untuk konsultasi gratis." />
+        <meta property="og:url" content="https://genion.site/contact" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:locale" content="id_ID" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hubungi Kami - Konsultasi Gratis Proyek Digital | Genion Team" />
+        <meta name="twitter:description" content="Mulai kolaborasi digital dengan Genion Team. Hubungi kami via WhatsApp 0881-0250-36245, email nafilhabibi07@gmail.com, atau kunjungi kantor kami untuk konsultasi gratis." />
+        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
+        <link rel="canonical" href="https://genion.site/contact" />
+        <script type="application/ld+json">
+          {JSON.stringify(localBusinessSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
       {/* ─── SECTION 1: HERO ─── */}
       <section
         ref={heroRef}

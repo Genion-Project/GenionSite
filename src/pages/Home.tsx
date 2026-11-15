@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import genion from "../images/Gene.webp";
@@ -43,7 +44,7 @@ const TOP_PROJECTS: ProjectDetail[] = [
     year: "2024",
     description:
       "Dashboard real-time untuk monitoring dan analisis Kost Dan Aplikasi Mobile Pemesanan Kos.",
-    image: "/beranda_kostapp.png",
+    image: "/beranda_kostapp.webp",
     techs: [
       { name: "TailwindCSS", icon: "mdi:tailwind", bg: "bg-blue-100/80 dark:bg-blue-900/50", text: "text-blue-800 dark:text-blue-200" },
       { name: "Laravel", icon: "mdi:laravel", bg: "bg-red-100/80 dark:bg-red-900/50", text: "text-red-800 dark:text-red-200" },
@@ -62,7 +63,7 @@ const TOP_PROJECTS: ProjectDetail[] = [
     year: "2023",
     description:
       "Aplikasi & Web untuk manajemen Pemasukan dan Pengeluaran Secara Efektif dan Transparan.",
-    image: "/Ka.png",
+    image: "/Ka.webp",
     techs: [
       { name: "JavaScript", icon: "mdi:language-javascript", bg: "bg-yellow-100/80 dark:bg-yellow-900/50", text: "text-yellow-800 dark:text-yellow-200" },
       { name: "Flutter", icon: "simple-icons:flutter", bg: "bg-cyan-100/80 dark:bg-cyan-900/50", text: "text-cyan-800 dark:text-cyan-200" },
@@ -163,6 +164,21 @@ export const Home: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Genion Team - Solusi Digital Cerdas, Inovatif & Terdepan | Web, Mobile, AI</title>
+        <meta name="description" content="Genion Team menyediakan solusi teknologi terdepan: Pengembangan Web & Mobile, Digital Marketing, UI/UX Design, Cloud Architecture, dan AI. 30+ proyek selesai, 100% kepuasan klien." />
+        <meta property="og:title" content="Genion Team - Solusi Digital Cerdas, Inovatif & Terdepan | Web, Mobile, AI" />
+        <meta property="og:description" content="Genion Team menyediakan solusi teknologi terdepan: Pengembangan Web & Mobile, Digital Marketing, UI/UX Design, Cloud Architecture, dan AI. 30+ proyek selesai, 100% kepuasan klien." />
+        <meta property="og:url" content="https://genion.site/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:locale" content="id_ID" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Genion Team - Solusi Digital Cerdas, Inovatif & Terdepan | Web, Mobile, AI" />
+        <meta name="twitter:description" content="Genion Team menyediakan solusi teknologi terdepan: Pengembangan Web & Mobile, Digital Marketing, UI/UX Design, Cloud Architecture, dan AI. 30+ proyek selesai, 100% kepuasan klien." />
+        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
+        <link rel="canonical" href="https://genion.site/" />
+      </Helmet>
       {/* ─── SECTION 1: HERO ─── */}
       <section
         ref={heroRef}
@@ -352,6 +368,7 @@ export const Home: React.FC = () => {
                     src={proj.image}
                     alt={proj.title}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/30" />
                 </div>
@@ -471,6 +488,7 @@ export const Home: React.FC = () => {
                 src={selectedProject.image}
                 alt={selectedProject.title}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-5">

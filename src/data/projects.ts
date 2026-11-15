@@ -111,7 +111,7 @@ export const projects: ProjectItem[] = [
       "Aplikasi mobile dan dashboard real-time untuk pencarian, pemesanan, dan pengelolaan sewa kamar kost secara transparan.",
     longDescription:
       "KostApp menghadirkan kemudahan bagi pencari hunian dan pemilik kost di kota-kota besar. Dilengkapi integrasi peta geolokasi, virtual tour kamar, otomasi kontrak sewa digital, dan gerbang pembayaran terpadu dengan reminder jatuh tempo otomatis.",
-    image: "/beranda_kostapp.png",
+    image: "/beranda_kostapp.webp",
     techs: [
       {
         name: "Flutter",
@@ -164,7 +164,7 @@ export const projects: ProjectItem[] = [
       "Aplikasi mobile & web untuk manajemen kas masuk, kas keluar, dan pelaporan keuangan organisasi secara transparan dan akuntabel.",
     longDescription:
       "Bendahara App dirancang untuk mengatasi kerumitan pencatatan manual keuangan organisasi, yayasan, dan komunitas. Menawarkan pencatatan transaksi offline-first, pelampiran bukti transaksi digital, multi-wallet balance, serta generator laporan neraca laba-rugi instan.",
-    image: "/Ka.png",
+    image: "/Ka.webp",
     techs: [
       {
         name: "Flutter",

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { coreTeam, teamMembers, type TeamMember } from "../data/team";
@@ -166,6 +167,21 @@ export const Team: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Tim Kami - 11 Profesional Teknologi Berdedikasi | Genion Team</title>
+        <meta name="description" content="Bertemu dengan para inovator di balik solusi digital Genion: Nafil Habibi (CIO), Muhammad Yusuf (Fullstack), Stanly Andrian (Cloud Engineer), dan 8 profesional lainnya." />
+        <meta property="og:title" content="Tim Kami - 11 Profesional Teknologi Berdedikasi | Genion Team" />
+        <meta property="og:description" content="Bertemu dengan para inovator di balik solusi digital Genion: Nafil Habibi (CIO), Muhammad Yusuf (Fullstack), Stanly Andrian (Cloud Engineer), dan 8 profesional lainnya." />
+        <meta property="og:url" content="https://genion.site/team" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://genion.site/og-image.webp" />
+        <meta property="og:locale" content="id_ID" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tim Kami - 11 Profesional Teknologi Berdedikasi | Genion Team" />
+        <meta name="twitter:description" content="Bertemu dengan para inovator di balik solusi digital Genion: Nafil Habibi (CIO), Muhammad Yusuf (Fullstack), Stanly Andrian (Cloud Engineer), dan 8 profesional lainnya." />
+        <meta name="twitter:image" content="https://genion.site/og-image.webp" />
+        <link rel="canonical" href="https://genion.site/team" />
+      </Helmet>
       {/* ─── SECTION 1: HERO ─── */}
       <section
         ref={heroRef}
@@ -286,6 +302,7 @@ export const Team: React.FC = () => {
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
                   </div>
 
@@ -378,6 +395,7 @@ export const Team: React.FC = () => {
                       className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
                         member.name === "Stanly Andrian Pratama" ? "object-top" : ""
                       }`}
+                      loading="lazy"
                     />
                   </div>
 
@@ -520,6 +538,7 @@ export const Team: React.FC = () => {
                   src={selectedMember.member.image}
                   alt={selectedMember.member.name}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
 
