@@ -533,11 +533,13 @@ export const Team: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-6 items-start">
               {/* Photo */}
-              <div className="w-24 h-24 sm:w-5/12 sm:aspect-[4/5] mx-auto sm:mx-0 rounded-xl overflow-hidden bg-gray-200 dark:bg-[#1a1a1a] flex-shrink-0 max-h-48 sm:max-h-none">
+              <div className="w-44 sm:w-5/12 aspect-[4/5] mx-auto sm:mx-0 rounded-xl overflow-hidden bg-gray-200 dark:bg-[#1a1a1a] flex-shrink-0">
                 <img
                   src={selectedMember.member.image}
                   alt={selectedMember.member.name}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover ${
+                    selectedMember.member.name === "Stanly Andrian Pratama" ? "object-top" : ""
+                  }`}
                   loading="lazy"
                 />
               </div>
