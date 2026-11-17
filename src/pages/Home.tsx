@@ -187,7 +187,7 @@ export const Home: React.FC = () => {
         {/* Subtle radial glow top-left */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_60%_at_10%_40%,rgba(0,229,160,0.05),transparent)]" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-28 pb-16 sm:py-32">
           {/* Eyebrow */}
           <div ref={eyebrowRef} className="flex items-center gap-3 mb-8 opacity-0">
             <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-[#111] border border-gray-300 dark:border-[#222] flex items-center justify-center">
@@ -204,19 +204,19 @@ export const Home: React.FC = () => {
             className="font-poppins font-bold leading-[1.05] text-gray-900 dark:text-white mb-6"
           >
             {/* Line 1 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.5rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.5rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 Solusi digital
               </span>
             </span>
             {/* Line 2 — with accent word */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.5rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.5rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 cerdas, <span className="text-[#0891b2]">inovatif</span>, dan
               </span>
             </span>
             {/* Line 3 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.5rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.5rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 terdepan.
               </span>
@@ -256,7 +256,7 @@ export const Home: React.FC = () => {
       <section className="bg-white dark:bg-[#0d0d0d] border-t border-gray-200 dark:border-white/5">
         <div
           ref={statsRef}
-          className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-10 sm:py-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8"
         >
           {[
             { num: "01", label: "SISTEM DIGITAL", title: "Terintegrasi", sub: "Klien, tim & solusi terhubung" },
@@ -268,7 +268,7 @@ export const Home: React.FC = () => {
               <p className="text-[10px] font-mono tracking-widest uppercase text-gray-500 dark:text-gray-600 mb-2">
                 {s.num} / {s.label}
               </p>
-              <p className="text-gray-900 dark:text-white font-bold text-xl mb-1">{s.title}</p>
+              <p className="text-gray-900 dark:text-white font-bold text-base sm:text-xl mb-1">{s.title}</p>
               <p className="text-gray-500 dark:text-gray-600 text-xs">{s.sub}</p>
             </div>
           ))}
@@ -405,9 +405,10 @@ export const Home: React.FC = () => {
           <div className="mt-12 text-center">
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 border border-[#0891b2] text-[#0891b2] hover:bg-[#0891b2] hover:text-black font-semibold text-xs font-mono uppercase tracking-wider px-6 py-3 rounded-md transition-all duration-200"
+              className="inline-flex items-center gap-2 border border-[#0891b2] text-[#0891b2] hover:bg-[#0891b2] hover:text-black font-semibold text-xs font-mono uppercase tracking-wider px-4 sm:px-6 py-3 rounded-md transition-all duration-200 w-full sm:w-auto justify-center"
             >
-              LIHAT SEMUA PROYEK GENION ({">"})
+              <span className="hidden sm:inline">LIHAT SEMUA PROYEK GENION ({">"}) </span>
+              <span className="sm:hidden">LIHAT SEMUA PROYEK →</span>
             </Link>
           </div>
         </div>
@@ -416,7 +417,7 @@ export const Home: React.FC = () => {
       {/* ─── SECTION 5: FINAL CTA ─── */}
       <section className="bg-white dark:bg-[#0d0d0d] py-24">
         <div ref={ctaSectionRef} className="max-w-4xl mx-auto px-6 opacity-0">
-          <div className="border border-gray-200 dark:border-[#1f1f1f] bg-gray-50 dark:bg-[#0f0f0f] rounded-2xl p-10 sm:p-16 text-center">
+          <div className="border border-gray-200 dark:border-[#1f1f1f] bg-gray-50 dark:bg-[#0f0f0f] rounded-2xl p-6 sm:p-12 lg:p-16 text-center">
             <div className="flex items-center justify-center gap-3 mb-6 text-[10px] font-mono tracking-widest uppercase">
               <span className="text-[#0891b2]">● PORTAL TERPERCAYA</span>
               <span className="text-gray-400 dark:text-gray-700">•</span>
@@ -461,7 +462,7 @@ export const Home: React.FC = () => {
       {selectedProject && (
         <div
           onClick={() => setSelectedProject(null)}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
         >
           <div
             onClick={(e) => e.stopPropagation()}
@@ -478,7 +479,7 @@ export const Home: React.FC = () => {
               </div>
               <button
                 onClick={() => setSelectedProject(null)}
-                className="w-8 h-8 rounded-full bg-gray-200 dark:bg-[#1a1a1a] hover:bg-gray-300 dark:hover:bg-[#222] flex items-center justify-center text-gray-600 dark:text-gray-400"
+                className="w-10 h-10 rounded-full bg-gray-200 dark:bg-[#1a1a1a] hover:bg-gray-300 dark:hover:bg-[#222] flex items-center justify-center text-gray-600 dark:text-gray-400 flex-shrink-0"
               >
                 ✕
               </button>

@@ -185,7 +185,7 @@ export const Team: React.FC = () => {
       {/* ─── SECTION 1: HERO ─── */}
       <section
         ref={heroRef}
-        className="relative bg-white dark:bg-[#0d0d0d] pt-36 sm:pt-44 pb-24 sm:pb-32 overflow-hidden"
+        className="relative bg-white dark:bg-[#0d0d0d] pt-28 sm:pt-44 pb-16 sm:pb-32 overflow-hidden"
       >
         {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_60%_at_10%_40%,rgba(8,145,178,0.06),transparent)]" />
@@ -207,19 +207,19 @@ export const Team: React.FC = () => {
             className="font-poppins font-bold leading-[1.05] text-gray-900 dark:text-white mb-8"
           >
             {/* Line 1 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 Para inovator di balik
               </span>
             </span>
             {/* Line 2 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 <span className="text-[#0891b2]">solusi digital</span> &amp;
               </span>
             </span>
             {/* Line 3 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 teknologi terdepan.
               </span>
@@ -260,14 +260,14 @@ export const Team: React.FC = () => {
       <section className="bg-white dark:bg-[#0d0d0d] border-t border-gray-200 dark:border-white/5">
         <div
           ref={statsRef}
-          className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-10 sm:py-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8"
         >
           {STATS.map((s, i) => (
             <div key={i} className="border-l border-gray-200 dark:border-white/10 pl-4 stat-item opacity-0">
               <p className="text-[10px] font-mono tracking-widest uppercase text-gray-500 dark:text-gray-600 mb-2">
                 {s.num} / {s.label}
               </p>
-              <p className="text-gray-900 dark:text-white font-bold text-xl mb-1">{s.title}</p>
+              <p className="text-gray-900 dark:text-white font-bold text-base sm:text-xl mb-1">{s.title}</p>
               <p className="text-gray-500 dark:text-gray-600 text-xs">{s.sub}</p>
             </div>
           ))}
@@ -376,7 +376,7 @@ export const Team: React.FC = () => {
 
           <div
             ref={teamGridRef}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6"
           >
             {teamMembers.map((member, index) => {
               const fullIndex = coreTeam.length + index;
@@ -471,7 +471,7 @@ export const Team: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div
             ref={ctaSectionRef}
-            className="border border-gray-200 dark:border-[#1f1f1f] bg-gray-50 dark:bg-[#0f0f0f] rounded-2xl p-10 sm:p-16 text-center max-w-4xl mx-auto opacity-0"
+            className="border border-gray-200 dark:border-[#1f1f1f] bg-gray-50 dark:bg-[#0f0f0f] rounded-2xl p-6 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto opacity-0"
           >
             <p className="section-badge mx-auto mb-6">[ 04 • KOLABORASI ]</p>
             <h2 className="font-poppins font-bold text-gray-900 dark:text-white text-3xl sm:text-4xl leading-tight mb-4">
@@ -514,7 +514,7 @@ export const Team: React.FC = () => {
       {selectedMember && (
         <div
           onClick={() => setSelectedMember(null)}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in-up"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] flex items-center justify-center p-4 animate-fade-in-up"
         >
           <div
             onClick={(e) => e.stopPropagation()}
@@ -524,7 +524,7 @@ export const Team: React.FC = () => {
             <button
               onClick={() => setSelectedMember(null)}
               aria-label="Tutup modal"
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 rounded-full bg-gray-100 dark:bg-[#1a1a1a] hover:bg-gray-200 dark:hover:bg-[#252525] flex items-center justify-center text-gray-600 dark:text-gray-300 transition-colors z-10"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-gray-100 dark:bg-[#1a1a1a] hover:bg-gray-200 dark:hover:bg-[#252525] flex items-center justify-center text-gray-600 dark:text-gray-300 transition-colors z-10"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -533,7 +533,7 @@ export const Team: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-6 items-start">
               {/* Photo */}
-              <div className="w-full sm:w-5/12 aspect-[4/5] rounded-xl overflow-hidden bg-gray-200 dark:bg-[#1a1a1a] flex-shrink-0">
+              <div className="w-24 h-24 sm:w-5/12 sm:aspect-[4/5] mx-auto sm:mx-0 rounded-xl overflow-hidden bg-gray-200 dark:bg-[#1a1a1a] flex-shrink-0 max-h-48 sm:max-h-none">
                 <img
                   src={selectedMember.member.image}
                   alt={selectedMember.member.name}

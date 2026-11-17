@@ -184,7 +184,7 @@ export const About: React.FC = () => {
       {/* ─── SECTION 1: HERO ─── */}
       <section
         ref={heroRef}
-        className="relative bg-white dark:bg-[#0d0d0d] pt-36 sm:pt-44 pb-24 sm:pb-32 overflow-hidden"
+        className="relative bg-white dark:bg-[#0d0d0d] pt-28 sm:pt-44 pb-16 sm:pb-32 overflow-hidden"
       >
         {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_60%_at_10%_40%,rgba(8,145,178,0.06),transparent)]" />
@@ -206,19 +206,19 @@ export const About: React.FC = () => {
             className="font-poppins font-bold leading-[1.05] text-gray-900 dark:text-white mb-8"
           >
             {/* Line 1 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 Mengenal lebih dekat
               </span>
             </span>
             {/* Line 2 — with accent word */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 <span className="text-[#0891b2]">Genion Team</span> &amp;
               </span>
             </span>
             {/* Line 3 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 visi besar kami.
               </span>
@@ -259,7 +259,7 @@ export const About: React.FC = () => {
       <section className="bg-white dark:bg-[#0d0d0d] border-t border-gray-200 dark:border-white/5">
         <div
           ref={statsRef}
-          className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-10 sm:py-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8"
         >
           {[
             { num: "01", label: "BERDIRI", title: "2024", sub: "Tim inovasi sejak 2024" },
@@ -271,7 +271,7 @@ export const About: React.FC = () => {
               <p className="text-[10px] font-mono tracking-widest uppercase text-gray-500 dark:text-gray-600 mb-2">
                 {s.num} / {s.label}
               </p>
-              <p className="text-gray-900 dark:text-white font-bold text-xl mb-1">{s.title}</p>
+              <p className="text-gray-900 dark:text-white font-bold text-base sm:text-xl mb-1">{s.title}</p>
               <p className="text-gray-500 dark:text-gray-600 text-xs">{s.sub}</p>
             </div>
           ))}
@@ -294,7 +294,7 @@ export const About: React.FC = () => {
 
           <div ref={visiMisiRef} className="grid md:grid-cols-2 gap-6">
             {/* Visi Card */}
-            <div className="vm-card bg-gray-100 dark:bg-[#111111] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-8 opacity-0">
+            <div className="vm-card bg-gray-100 dark:bg-[#111111] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-6 sm:p-8 opacity-0">
               <p className="text-[10px] font-mono tracking-widest text-[#0891b2] uppercase mb-4">01</p>
               <h3 className="font-poppins font-bold text-gray-900 dark:text-white text-xl mb-3">Visi Kami</h3>
               <p className="text-gray-500 dark:text-gray-500 text-sm leading-relaxed mb-6">
@@ -316,7 +316,7 @@ export const About: React.FC = () => {
             </div>
 
             {/* Misi Card */}
-            <div className="vm-card bg-gray-100 dark:bg-[#111111] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-8 opacity-0">
+            <div className="vm-card bg-gray-100 dark:bg-[#111111] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-6 sm:p-8 opacity-0">
               <p className="text-[10px] font-mono tracking-widest text-[#0891b2] uppercase mb-4">02</p>
               <h3 className="font-poppins font-bold text-gray-900 dark:text-white text-xl mb-3">Misi Kami</h3>
               <p className="text-gray-500 dark:text-gray-500 text-sm leading-relaxed mb-6">
@@ -425,7 +425,7 @@ export const About: React.FC = () => {
             Bertemu dengan para ahli yang akan menjadi mitra terpercaya dalam perjalanan transformasi digital Anda.
           </p>
 
-          <div ref={foundersRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div ref={foundersRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {FOUNDER_MEMBERS.map((member, index) => (
               <div
                 key={index}
@@ -475,7 +475,7 @@ export const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div
             ref={ctaSectionRef}
-            className="border border-gray-200 dark:border-[#1f1f1f] bg-gray-50 dark:bg-[#0f0f0f] rounded-2xl p-10 sm:p-16 text-center max-w-4xl mx-auto opacity-0"
+            className="border border-gray-200 dark:border-[#1f1f1f] bg-gray-50 dark:bg-[#0f0f0f] rounded-2xl p-6 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto opacity-0"
           >
             <p className="section-badge mx-auto mb-6">[ 04 • MULAI BERSAMA ]</p>
             <h2 className="font-poppins font-bold text-gray-900 dark:text-white text-3xl sm:text-4xl leading-tight mb-4">

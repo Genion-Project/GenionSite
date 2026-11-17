@@ -271,7 +271,7 @@ export const Services: React.FC = () => {
       {/* ─── SECTION 1: HERO ─── */}
       <section
         ref={heroRef}
-        className="relative bg-white dark:bg-[#0d0d0d] pt-36 sm:pt-44 pb-24 sm:pb-32 overflow-hidden"
+        className="relative bg-white dark:bg-[#0d0d0d] pt-28 sm:pt-44 pb-16 sm:pb-32 overflow-hidden"
       >
         {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_60%_at_10%_40%,rgba(8,145,178,0.06),transparent)]" />
@@ -293,19 +293,19 @@ export const Services: React.FC = () => {
             className="font-poppins font-bold leading-[1.05] text-gray-900 dark:text-white mb-8"
           >
             {/* Line 1 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 Solusi digital terdepan
               </span>
             </span>
             {/* Line 2 — with cyan accent */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 untuk <span className="text-[#0891b2]">percepatan bisnis</span>
               </span>
             </span>
             {/* Line 3 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 di era modern.
               </span>
@@ -345,14 +345,14 @@ export const Services: React.FC = () => {
       <section className="bg-white dark:bg-[#0d0d0d] border-t border-gray-200 dark:border-white/5">
         <div
           ref={statsRef}
-          className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-10 sm:py-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8"
         >
           {STATS.map((s, i) => (
             <div key={i} className="border-l border-gray-200 dark:border-white/10 pl-4 stat-item opacity-0">
               <p className="text-[10px] font-mono tracking-widest uppercase text-gray-500 dark:text-gray-600 mb-2">
                 {s.num} / {s.label}
               </p>
-              <p className="text-gray-900 dark:text-white font-bold text-xl mb-1">{s.title}</p>
+              <p className="text-gray-900 dark:text-white font-bold text-base sm:text-xl mb-1">{s.title}</p>
               <p className="text-gray-500 dark:text-gray-600 text-xs">{s.sub}</p>
             </div>
           ))}
@@ -379,7 +379,7 @@ export const Services: React.FC = () => {
             {SERVICES.map((service, idx) => (
               <div
                 key={idx}
-                className="service-card bg-gray-100 dark:bg-[#111111] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-8 hover:border-[#0891b2]/40 transition-all duration-300 opacity-0 flex flex-col justify-between"
+                className="service-card bg-gray-100 dark:bg-[#111111] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-6 sm:p-8 hover:border-[#0891b2]/40 transition-all duration-300 opacity-0 flex flex-col justify-between"
               >
                 <div>
                   <span className="text-[#0891b2] font-mono text-xs uppercase mb-4 block">
@@ -507,7 +507,7 @@ export const Services: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div
             ref={ctaSectionRef}
-            className="border border-gray-200 dark:border-[#1f1f1f] bg-gray-50 dark:bg-[#0f0f0f] rounded-2xl p-10 sm:p-16 text-center max-w-4xl mx-auto opacity-0"
+            className="border border-gray-200 dark:border-[#1f1f1f] bg-gray-50 dark:bg-[#0f0f0f] rounded-2xl p-6 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto opacity-0"
           >
             <p className="section-badge mx-auto mb-6">[ 04 • MULAI PROYEK ]</p>
             <h2 className="font-poppins font-bold text-gray-900 dark:text-white text-3xl sm:text-4xl leading-tight mb-4">

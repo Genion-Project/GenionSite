@@ -302,73 +302,46 @@ export const Chatbot: React.FC = () => {
         />
       )}
 
-      {/* Floating Trigger & Mascot */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9997] select-none">
-        {/* Animated Speech Bubble */}
-        <div
-          onClick={() => setIsOpen(true)}
-          className={`absolute bottom-full right-4 sm:right-16 mb-2 cursor-pointer transition-all duration-300 transform ${
-            bubbleText || isBubbleTyping
-              ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 translate-y-2 pointer-events-none"
-          }`}
-          title="Klik untuk membuka chat"
-        >
-          <div className="bg-white dark:bg-[#141414] rounded-2xl rounded-br-sm px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-xl shadow-cyan-950/20 border border-cyan-500/30 dark:border-cyan-500/30 max-w-[210px] sm:max-w-xs transition-colors">
-            {isBubbleTyping ? (
-              <div className="flex items-center space-x-1.5 py-1 px-1">
-                <span className="w-2 h-2 bg-[#0891b2] rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                <span className="w-2 h-2 bg-[#0891b2] rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                <span className="w-2 h-2 bg-[#0891b2] rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
-              </div>
-            ) : (
-              <p className="text-xs font-medium text-gray-800 dark:text-gray-200 leading-snug">
-                {bubbleText}
-              </p>
-            )}
-          </div>
-          {/* Bubble Pointer Arrow */}
-          <div className="absolute bottom-1 right-2 sm:right-0 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-white dark:border-l-[#141414] transform translate-x-full" />
-        </div>
-
-        {/* Mascot Image & Circular Button Container */}
-        <div className="relative flex items-end gap-1 sm:gap-2">
+      {/* Floating Mascot with Greeting Bubble */}
+      <div className="fixed bottom-6 right-6 z-[9997] select-none">
+        {/* Greeting Speech Bubble - appears above mascot */}
+        {(bubbleText || isBubbleTyping) && (
           <div
             onClick={() => setIsOpen(true)}
-            className="cursor-pointer relative flex items-end justify-center transform hover:scale-105 active:scale-95 transition-transform duration-200 w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28"
-            title="Tanya Genisten!"
+            className="absolute bottom-full right-0 mb-3 cursor-pointer transition-all duration-300 transform animate-bounce-subtle"
+            title="Klik untuk membuka chat"
           >
-            <img
-              src={mascotImg}
-              alt="Mascot Genion"
-              className="w-full h-full object-contain filter drop-shadow-xl animate-float"
-            />
+            <div className="bg-white dark:bg-[#1a1a1a] rounded-2xl rounded-br-sm px-4 py-3 shadow-2xl border border-[#0891b2]/30 dark:border-[#0891b2]/50 max-w-[220px] sm:max-w-[260px] hover:border-[#0891b2]/50 transition-colors">
+              {isBubbleTyping ? (
+                <div className="flex items-center space-x-1.5 py-1">
+                  <span className="w-2 h-2 bg-[#0891b2] rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                  <span className="w-2 h-2 bg-[#0891b2] rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                  <span className="w-2 h-2 bg-[#0891b2] rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                </div>
+              ) : (
+                <p className="text-sm font-medium text-gray-800 dark:text-gray-100 leading-relaxed">
+                  {bubbleText}
+                </p>
+              )}
+            </div>
+            {/* Bubble Pointer Arrow */}
+            <div className="absolute bottom-0 right-8 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-white dark:border-t-[#1a1a1a] transform translate-y-full" />
           </div>
+        )}
 
-          <button
-            onClick={() => setIsOpen((prev) => !prev)}
-            className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-gradient-to-tr from-[#0891b2] to-[#06b6d4] hover:from-[#0e7490] hover:to-[#0891b2] text-white rounded-full shadow-lg shadow-cyan-600/30 border border-cyan-400/40 transform hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#0891b2]/50"
-            aria-label={isOpen ? "Tutup Chatbot" : "Buka Chatbot"}
-          >
-            {isOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <div className="relative">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                  />
-                </svg>
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 border-2 border-[#0891b2] rounded-full animate-ping" />
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 border-2 border-[#0891b2] rounded-full" />
-              </div>
-            )}
-          </button>
+        {/* Mascot Image - Clickable to open chat */}
+        <div
+          onClick={() => setIsOpen(true)}
+          className="cursor-pointer relative flex items-end justify-center transform hover:scale-110 active:scale-95 transition-transform duration-300 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28"
+          title="Klik untuk chat dengan Genisten!"
+          role="button"
+          aria-label="Buka chat dengan Genisten"
+        >
+          <img
+            src={mascotImg}
+            alt="Genisten - Asisten Virtual Genion Team"
+            className="w-full h-full object-contain filter drop-shadow-2xl animate-float"
+          />
         </div>
       </div>
 

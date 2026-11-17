@@ -230,7 +230,7 @@ export const Contact: React.FC = () => {
       {/* ─── SECTION 1: HERO ─── */}
       <section
         ref={heroRef}
-        className="relative bg-white dark:bg-[#0d0d0d] pt-36 sm:pt-44 pb-20 sm:pb-28 overflow-hidden"
+        className="relative bg-white dark:bg-[#0d0d0d] pt-28 sm:pt-44 pb-16 sm:pb-28 overflow-hidden"
       >
         {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_60%_at_10%_40%,rgba(8,145,178,0.06),transparent)]" />
@@ -252,19 +252,19 @@ export const Contact: React.FC = () => {
             className="font-poppins font-bold leading-[1.05] text-gray-900 dark:text-white mb-8"
           >
             {/* Line 1 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 Mulai kolaborasi digital
               </span>
             </span>
             {/* Line 2 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 bersama <span className="text-[#0891b2]">Genion Team</span>,
               </span>
             </span>
             {/* Line 3 */}
-            <span className="block text-5xl sm:text-7xl lg:text-[5.2rem] overflow-hidden">
+            <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] overflow-hidden leading-tight">
               <span className="block translate-y-full opacity-0" data-gsap="line">
                 kami siap membantu.
               </span>

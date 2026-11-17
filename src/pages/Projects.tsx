@@ -340,7 +340,7 @@ export const Projects: React.FC = () => {
           >
             <div className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
               {/* Category Tabs */}
-              <div className="flex flex-wrap items-center gap-2 overflow-x-auto pb-1 lg:pb-0">
+              <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-2 lg:pb-0 no-scrollbar">
                 {PROJECT_CATEGORIES.map((cat) => {
                   const isActive = activeCategory === cat;
                   return (
@@ -360,7 +360,7 @@ export const Projects: React.FC = () => {
               </div>
 
               {/* Search input field */}
-              <div className="relative min-w-[260px] sm:w-80">
+              <div className="relative w-full sm:w-80">
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
